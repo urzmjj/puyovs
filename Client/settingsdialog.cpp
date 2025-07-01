@@ -89,14 +89,14 @@ void SettingsDialog::load()
 	// Controls
 	char a[4];
 	strcpy(a, toString(ui->PlayerNumSpinBox->value()).c_str());
-	ui->UpInput->setText(settings.string("controlsp"+a, "up", "up"));
-	ui->DownInput->setText(settings.string("controlsp"+a, "down", "down"));
-	ui->LeftInput->setText(settings.string("controlsp"+a, "left", "left"));
-	ui->RightInput->setText(settings.string("controlsp"+a, "right", "right"));
-	ui->AInput->setText(settings.string("controlsp"+a, "a", "x"));
-	ui->BInput->setText(settings.string("controlsp"+a, "b", "z"));
-	ui->StartInput->setText(settings.string("controlsp"+a+, "start", "return"));
-	ui->SwapABConfirmCheckBox->setChecked(settings.boolean("controlsp"+a, "swapabconfirm", false));
+	ui->UpInput->setText(settings.string(strcat("controlsp",a), "up", "up"));
+	ui->DownInput->setText(settings.string(strcat("controlsp",a), "down", "down"));
+	ui->LeftInput->setText(settings.string(strcat("controlsp",a), "left", "left"));
+	ui->RightInput->setText(settings.string(strcat("controlsp",a), "right", "right"));
+	ui->AInput->setText(settings.string(strcat("controlsp",a), "a", "x"));
+	ui->BInput->setText(settings.string(strcat("controlsp",a), "b", "z"));
+	ui->StartInput->setText(settings.string(strcat("controlsp",a)+, "start", "return"));
+	ui->SwapABConfirmCheckBox->setChecked(settings.boolean(strcat("controlsp",a), "swapabconfirm", false));
 
 	// Customization
 	fetchFileLists();
@@ -161,14 +161,14 @@ void SettingsDialog::save()
 	// Controls
 	char a[4];
 	strcpy(a, toString(ui->PlayerNumSpinBox->value()).c_str());
-	settings.setString("controlsp"+a, "up", ui->UpInput->text());
-	settings.setString("controlsp"+a, "down", ui->DownInput->text());
-	settings.setString("controlsp"+a, "left", ui->LeftInput->text());
-	settings.setString("controlsp"+a, "right", ui->RightInput->text());
-	settings.setString("controlsp"+a, "a", ui->AInput->text());
-	settings.setString("controlsp"+a, "b", ui->BInput->text());
-	settings.setString("controlsp"+a, "start", ui->StartInput->text());
-	settings.setBoolean("controlsp"+a, "swapabconfirm", ui->SwapABConfirmCheckBox->isChecked());
+	settings.setString(strcat("controlsp",a), "up", ui->UpInput->text());
+	settings.setString(strcat("controlsp",a), "down", ui->DownInput->text());
+	settings.setString(strcat("controlsp",a), "left", ui->LeftInput->text());
+	settings.setString(strcat("controlsp",a), "right", ui->RightInput->text());
+	settings.setString(strcat("controlsp",a), "a", ui->AInput->text());
+	settings.setString(strcat("controlsp",a), "b", ui->BInput->text());
+	settings.setString(strcat("controlsp",a), "start", ui->StartInput->text());
+	settings.setBoolean(strcat("controlsp",a), "swapabconfirm", ui->SwapABConfirmCheckBox->isChecked());
 
 	// Customization
 	settings.setString("custom", "background", ui->BackgroundComboBox->currentText());
