@@ -9,6 +9,7 @@
 #include <QDirIterator>
 #include <QFileDialog>
 #include <alib/audiolib.h>
+#include <string.h>
 
 SettingsDialog::SettingsDialog(LanguageManager* lm, ppvs::AssetManager* am, QWidget* parent)
 	: QDialog(parent)
@@ -86,7 +87,8 @@ void SettingsDialog::load()
 	ui->QuickDropCheckBox->setChecked(settings.boolean("rules", "quickdrop", false));
 
 	// Controls
-	char[] a = ui->PlayerNumSpinBox->value();
+	char a[4];
+	strcpy(a, toString(ui->PlayerNumSpinBox->value()).c_str());
 	ui->UpInput->setText(settings.string("controlsp"+a, "up", "up"));
 	ui->DownInput->setText(settings.string("controlsp"+a, "down", "down"));
 	ui->LeftInput->setText(settings.string("controlsp"+a, "left", "left"));
@@ -157,7 +159,8 @@ void SettingsDialog::save()
 	settings.setBoolean("rules", "quickdrop", ui->QuickDropCheckBox->isChecked());
 
 	// Controls
-	char[] a = ui->PlayerNumSpinBox->value();
+	char a[4];
+	strcpy(a, toString(ui->PlayerNumSpinBox->value()).c_str());
 	settings.setString("controlsp"+a, "up", ui->UpInput->text());
 	settings.setString("controlsp"+a, "down", ui->DownInput->text());
 	settings.setString("controlsp"+a, "left", ui->LeftInput->text());
