@@ -88,7 +88,7 @@ void SettingsDialog::load()
 
 	// Controls
 	char a[4];
-	strcpy(a, toString(ui->PlayerNumSpinBox->value()).c_str());
+	strcpy(a, std::toString(ui->PlayerNumSpinBox->value()).c_str());
 	ui->UpInput->setText(settings.string(strcat("controlsp",a), "up", "up"));
 	ui->DownInput->setText(settings.string(strcat("controlsp",a), "down", "down"));
 	ui->LeftInput->setText(settings.string(strcat("controlsp",a), "left", "left"));
@@ -160,7 +160,7 @@ void SettingsDialog::save()
 
 	// Controls
 	char a[4];
-	strcpy(a, toString(ui->PlayerNumSpinBox->value()).c_str());
+	strcpy(a, std::toString(ui->PlayerNumSpinBox->value()).c_str());
 	settings.setString(strcat("controlsp",a), "up", ui->UpInput->text());
 	settings.setString(strcat("controlsp",a), "down", ui->DownInput->text());
 	settings.setString(strcat("controlsp",a), "left", ui->LeftInput->text());
