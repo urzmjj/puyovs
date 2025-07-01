@@ -1,5 +1,11 @@
 # Puyo VS [![Build](https://github.com/puyonexus/puyovs/actions/workflows/compile.yml/badge.svg)](https://github.com/puyonexus/puyovs/actions/workflows/compile.yml) [![Chat](https://img.shields.io/discord/991434636657971323?label=Chat)](https://discord.gg/cnUzgbFEXX)
 
+this vesrion was designed mostly around offline modes because i can't get a server
+
+
+
+
+
 Welcome to the Puyo VS 2 source code.
 
 Puyo VS 2 was originally written by [Hernan](https://twitter.com/HernanZh/) with some contributions from other developers.

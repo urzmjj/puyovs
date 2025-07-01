@@ -623,104 +623,126 @@
       <attribute name="title">
        <string comment="TitleControls">Controls</string>
       </attribute>
-      <layout class="QFormLayout" name="formLayout_2">
-       <property name="fieldGrowthPolicy">
-        <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-       </property>
-       <item row="0" column="0">
-        <widget class="QLabel" name="UpLabel">
-         <property name="text">
-          <string comment="Up">Up</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="DownLabel">
-         <property name="text">
-          <string comment="Down">Down</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="LeftLabel">
-         <property name="text">
-          <string comment="Left">Left</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="RightLabel">
-         <property name="text">
-          <string comment="Right">Right</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0">
-        <widget class="QLabel" name="ALabel">
-         <property name="text">
-          <string comment="A">A</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="0">
-        <widget class="QLabel" name="BLabel">
-         <property name="text">
-          <string comment="B">B</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="InputWidget" name="UpInput" native="true"/>
-       </item>
-       <item row="1" column="1">
-        <widget class="InputWidget" name="DownInput" native="true"/>
-       </item>
-       <item row="2" column="1">
-        <widget class="InputWidget" name="LeftInput" native="true"/>
-       </item>
-       <item row="3" column="1">
-        <widget class="InputWidget" name="RightInput" native="true"/>
-       </item>
-       <item row="4" column="1">
-        <widget class="InputWidget" name="AInput" native="true"/>
-       </item>
-       <item row="6" column="0">
-        <widget class="QLabel" name="StartLavel">
-         <property name="text">
-          <string>Start</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="1">
-        <widget class="InputWidget" name="BInput" native="true"/>
-       </item>
-       <item row="6" column="1">
-        <widget class="InputWidget" name="StartInput" native="true"/>
-       </item>
-       <item row="7" column="0">
-        <spacer name="SwapABConfirmSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="7" column="1">
-        <widget class="QCheckBox" name="SwapABConfirmCheckBox">
-         <property name="text">
-          <string>Swap A/B Confirmation</string>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
+
+        <layout class="QFormLayout" name="formLayout_2">
+        <property name="fieldGrowthPolicy">
+          <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+        </property>
+        <item row="0" column="0">
+          <widget class="QLabel" name="PlayerNumberLabel">
+          <property name="text">
+            <string comment="Player Number">Player Number</string>
+          </property>
+          </widget>
+        </item>
+        <item row="0" column="1">
+          <widget class="QSpinBox" name="PlayerNumberSpinBox">
+          <property name="minimum">
+            <number>1</number>
+          </property>
+          <property name="maximum">
+            <number>4</number>
+          </property>
+          <property name="value">
+            <number>1</number>
+          </property>
+          </widget>
+        </item>
+        <item row="1" column="0">
+          <widget class="QLabel" name="UpLabel">
+          <property name="text">
+            <string comment="Up">Up</string>
+          </property>
+          </widget>
+        </item>
+        <item row="2" column="0">
+          <widget class="QLabel" name="DownLabel">
+          <property name="text">
+            <string comment="Down">Down</string>
+          </property>
+          </widget>
+        </item>
+        <item row="3" column="0">
+          <widget class="QLabel" name="LeftLabel">
+          <property name="text">
+            <string comment="Left">Left</string>
+          </property>
+          </widget>
+        </item>
+        <item row="4" column="0">
+          <widget class="QLabel" name="RightLabel">
+          <property name="text">
+            <string comment="Right">Right</string>
+          </property>
+          </widget>
+        </item>
+        <item row="5" column="0">
+          <widget class="QLabel" name="ALabel">
+          <property name="text">
+            <string comment="A">A</string>
+          </property>
+          </widget>
+        </item>
+        <item row="6" column="0">
+          <widget class="QLabel" name="BLabel">
+          <property name="text">
+            <string comment="B">B</string>
+          </property>
+          </widget>
+        </item>
+        <item row="1" column="1">
+          <widget class="InputWidget" name="UpInput" native="true"/>
+        </item>
+        <item row="2" column="1">
+          <widget class="InputWidget" name="DownInput" native="true"/>
+        </item>
+        <item row="3" column="1">
+          <widget class="InputWidget" name="LeftInput" native="true"/>
+        </item>
+        <item row="4" column="1">
+          <widget class="InputWidget" name="RightInput" native="true"/>
+        </item>
+        <item row="5" column="1">
+          <widget class="InputWidget" name="AInput" native="true"/>
+        </item>
+        <item row="7" column="0">
+          <widget class="QLabel" name="StartLavel">
+          <property name="text">
+            <string>Start</string>
+          </property>
+          </widget>
+        </item>
+        <item row="6" column="1">
+          <widget class="InputWidget" name="BInput" native="true"/>
+        </item>
+        <item row="7" column="1">
+          <widget class="InputWidget" name="StartInput" native="true"/>
+        </item>
+        <item row="8" column="0">
+          <spacer name="SwapABConfirmSpacer">
+          <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+            <size>
+            <width>40</width>
+            <height>20</height>
+            </size>
+          </property>
+          </spacer>
+        </item>
+        <item row="8" column="1">
+          <widget class="QCheckBox" name="SwapABConfirmCheckBox">
+          <property name="text">
+            <string>Swap A/B Confirmation</string>
+          </property>
+          <property name="checked">
+            <bool>true</bool>
+          </property>
+          </widget>
+        </item>
+        </layout>
+
      </widget>
      <widget class="QWidget" name="CustomizationTab">
       <attribute name="title">
