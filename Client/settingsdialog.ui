@@ -629,14 +629,14 @@
           <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
         </property>
         <item row="0" column="0">
-          <widget class="QLabel" name="PlayerNumberLabel">
+          <widget class="QLabel" name="PlayerNumLabel">
           <property name="text">
             <string comment="Player Number">Player Number</string>
           </property>
           </widget>
         </item>
         <item row="0" column="1">
-          <widget class="QSpinBox" name="PlayerNumberSpinBox">
+          <widget class="QSpinBox" name="PlayerNumSpinBox">
           <property name="minimum">
             <number>1</number>
           </property>
