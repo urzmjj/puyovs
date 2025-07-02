@@ -100,6 +100,8 @@ void readRulesetString(QString str, ppvs::RuleSetInfo* rs)
 			rs->colors = intVal;
 		else if (subitem[0] == "Nplayers")
 			rs->numPlayers = intVal;
+		else if (subitem[0] == "Nhumans")
+			rs->numHumans = intVal;
 		else if (subitem[0] == "default")
 			rs->custom = false;
 	}
@@ -123,8 +125,8 @@ QString createRulesetString(ppvs::RuleSetInfo* rs)
 
 	if (rs->custom)
 		return QString::asprintf("rules:%s|marginTime:%i|targetPoint:%i|requiredChain:%i|initialFeverCount:%i|feverPower:%i|puyoToClear:%i|quickDrop:%i|colors:%i|Nplayers:%i",
-			ruleString.toUtf8().data(), rs->marginTime, rs->targetPoint, rs->requiredChain, rs->initialFeverCount, rs->feverPower, rs->puyoToClear, (int)rs->quickDrop, rs->colors, rs->numPlayers);
-	return (QStringList() << "rules:" + ruleString << "default" << QString("Nplayers:%1").arg(rs->numPlayers)).join("|");
+			ruleString.toUtf8().data(), rs->marginTime, rs->targetPoint, rs->requiredChain, rs->initialFeverCount, rs->feverPower, rs->puyoToClear, (int)rs->quickDrop, rs->colors, rs->numPlayers, rs->numHumans);
+	return (QStringList() << "rules:" + ruleString << "default" << QString("Nplayers:%1").arg(rs->numPlayers)<< QString("Nhumans:%1").arg(rs->numHumans)).join("|");
 }
 
 InputCondition::InputCondition(const ilib::InputEvent& e)

@@ -1160,6 +1160,7 @@ void Game::saveReplay() const
 		m_settings->ruleSetInfo.feverPower,
 		m_settings->ruleSetInfo.puyoToClear,
 		m_settings->ruleSetInfo.numPlayers,
+		m_settings->ruleSetInfo.numHumans,
 		m_settings->ruleSetInfo.quickDrop,
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
 	};
@@ -1305,7 +1306,9 @@ void Game::loadReplay(const std::string& filename)
 	m_settings->ruleSetInfo.feverPower = rrh.feverPower;
 	m_settings->ruleSetInfo.puyoToClear = rrh.puyoToClear;
 	m_settings->ruleSetInfo.numPlayers = rrh.numPlayers;
+	m_settings->ruleSetInfo.numHumans = rrh.numHumans;
 	m_settings->numPlayers = rrh.numPlayers;
+	m_settings->numHumans = rrh.numHumans;
 
 	// Set rules
 	setRules();

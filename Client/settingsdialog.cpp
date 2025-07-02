@@ -9,8 +9,6 @@
 #include <QDirIterator>
 #include <QFileDialog>
 #include <alib/audiolib.h>
-#include <string>
-#include <cstring>
 
 SettingsDialog::SettingsDialog(LanguageManager* lm, ppvs::AssetManager* am, QWidget* parent)
 	: QDialog(parent)
@@ -88,16 +86,14 @@ void SettingsDialog::load()
 	ui->QuickDropCheckBox->setChecked(settings.boolean("rules", "quickdrop", false));
 
 	// Controls
-	char a[4];
-	strcpy(a, std::to_string(ui->PlayerNumSpinBox->value()).c_str());
-	ui->UpInput->setText(settings.string(strcat("controlsp",a), "up", "up"));
-	ui->DownInput->setText(settings.string(strcat("controlsp",a), "down", "down"));
-	ui->LeftInput->setText(settings.string(strcat("controlsp",a), "left", "left"));
-	ui->RightInput->setText(settings.string(strcat("controlsp",a), "right", "right"));
-	ui->AInput->setText(settings.string(strcat("controlsp",a), "a", "x"));
-	ui->BInput->setText(settings.string(strcat("controlsp",a), "b", "z"));
-	ui->StartInput->setText(settings.string(strcat("controlsp",a)+, "start", "return"));
-	ui->SwapABConfirmCheckBox->setChecked(settings.boolean(strcat("controlsp",a), "swapabconfirm", false));
+	ui->UpInput->setText(settings.string("controlsp1", "up", "up"));
+	ui->DownInput->setText(settings.string("controlsp1", "down", "down"));
+	ui->LeftInput->setText(settings.string("controlsp1", "left", "left"));
+	ui->RightInput->setText(settings.string("controlsp1", "right", "right"));
+	ui->AInput->setText(settings.string("controlsp1", "a", "x"));
+	ui->BInput->setText(settings.string("controlsp1", "b", "z"));
+	ui->StartInput->setText(settings.string("controlsp1", "start", "return"));
+	ui->SwapABConfirmCheckBox->setChecked(settings.boolean("controlsp1", "swapabconfirm", false));
 
 	// Customization
 	fetchFileLists();
@@ -160,16 +156,14 @@ void SettingsDialog::save()
 	settings.setBoolean("rules", "quickdrop", ui->QuickDropCheckBox->isChecked());
 
 	// Controls
-	char a[4];
-	strcpy(a, std::to_string(ui->PlayerNumSpinBox->value()).c_str());
-	settings.setString(strcat("controlsp",a), "up", ui->UpInput->text());
-	settings.setString(strcat("controlsp",a), "down", ui->DownInput->text());
-	settings.setString(strcat("controlsp",a), "left", ui->LeftInput->text());
-	settings.setString(strcat("controlsp",a), "right", ui->RightInput->text());
-	settings.setString(strcat("controlsp",a), "a", ui->AInput->text());
-	settings.setString(strcat("controlsp",a), "b", ui->BInput->text());
-	settings.setString(strcat("controlsp",a), "start", ui->StartInput->text());
-	settings.setBoolean(strcat("controlsp",a), "swapabconfirm", ui->SwapABConfirmCheckBox->isChecked());
+	settings.setString("controlsp1", "up", ui->UpInput->text());
+	settings.setString("controlsp1", "down", ui->DownInput->text());
+	settings.setString("controlsp1", "left", ui->LeftInput->text());
+	settings.setString("controlsp1", "right", ui->RightInput->text());
+	settings.setString("controlsp1", "a", ui->AInput->text());
+	settings.setString("controlsp1", "b", ui->BInput->text());
+	settings.setString("controlsp1", "start", ui->StartInput->text());
+	settings.setBoolean("controlsp1", "swapabconfirm", ui->SwapABConfirmCheckBox->isChecked());
 
 	// Customization
 	settings.setString("custom", "background", ui->BackgroundComboBox->currentText());

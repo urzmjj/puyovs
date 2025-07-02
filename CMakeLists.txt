@@ -11,7 +11,7 @@ option(SETUP_COMPILE_COMMANDS "Automatically set up compile_commands.json" ON)
 if(SETUP_COMPILE_COMMANDS)
   set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
   execute_process(
-    COMMAND ${CMAKE_COMMAND} -E create_symlink
+    COMMAND ${CMAKE_COMMAND} -E -lz create_symlink
       ${CMAKE_BINARY_DIR}/compile_commands.json
       ${CMAKE_CURRENT_SOURCE_DIR}/compile_commands.json
   )
@@ -30,7 +30,6 @@ else()
 endif()
 
 add_definitions("-DPREFIX=\"${CMAKE_INSTALL_PREFIX}\"")
-
 # Options
 option(ENABLE_UPDATER "Enables the Puyo VS auto-updater" OFF)
 option(ENABLE_ASAN "Enables AddressSanitizer" OFF)

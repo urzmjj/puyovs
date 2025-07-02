@@ -22,6 +22,7 @@ void RuleSetInfo::setRules(const Rules type)
 	feverPower = 100;
 	puyoToClear = 4;
 	numPlayers = 2;
+	numHumans = 2;
 	colors = 4; // Default: cannot choose colors
 	ruleSetType = type;
 	switch (type) {
@@ -47,7 +48,7 @@ GameSettings::GameSettings(const RuleSetInfo& ruleSetInfo)
 {
 	// Set default values
 	numPlayers = 2;
-	numHumans = 1;
+	numHumans = 2;
 
 	language = "EN";
 	playSound = true;

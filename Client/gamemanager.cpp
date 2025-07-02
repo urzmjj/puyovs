@@ -165,7 +165,7 @@ GameWidget* GameManager::createGame(ppvs::GameSettings* gs, const QString& roomN
 	gs->useCharacterField = settings.boolean("custom", "characterfield", true);
 
 	gs->numPlayers = gs->ruleSetInfo.numPlayers;
-	gs->numHumans = spectating || replay ? 0 : 1;
+	gs->numHumans = spectating || replay ? 0 : gs->ruleSetInfo.numHumans;
 	gs->spectating = spectating || replay;
 
 	if (replay) {
