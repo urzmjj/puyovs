@@ -188,7 +188,7 @@ void CharacterSelect::play()
 
 				// TEMP chance to cancel
 				if (m_madeChoice[i]) {
-					if ((m_currentGame->m_players[currentPlayer]->m_controls.m_b == 1 && m_currentGame->m_settings->swapABConfirm == false) || (m_currentGame->m_players[currentPlayer]->m_controls.m_a == 1 && m_currentGame->m_settings->swapABConfirm == true)) {
+					if ((m_currentGame->m_players[currentPlayer]->m_controls.m_b == 1 && m_currentGame->m_settings->swapABConfirm[currentPlayer] == false) || (m_currentGame->m_players[currentPlayer]->m_controls.m_a == 1 && m_currentGame->m_settings->swapABConfirm[currentPlayer] == true)) {
 						int j = i;
 
 						// Check if CPU should be canceled first
@@ -200,7 +200,7 @@ void CharacterSelect::play()
 							}
 						}
 						m_data->snd.cancel.play(m_data);
-						if (m_currentGame->m_settings->swapABConfirm == false) {
+						if (m_currentGame->m_settings->swapABConfirm[currentPlayer] == false) {
 							m_currentGame->m_players[currentPlayer]->m_controls.m_b++;
 						} else {
 							m_currentGame->m_players[currentPlayer]->m_controls.m_a++;
@@ -270,7 +270,7 @@ void CharacterSelect::play()
 			}
 
 			// Make choice
-			if ((m_currentGame->m_players[currentPlayer]->m_controls.m_a == 1 && m_currentGame->m_settings->swapABConfirm == false && m_timer > 80) || (m_currentGame->m_players[currentPlayer]->m_controls.m_b == 1 && m_currentGame->m_settings->swapABConfirm == true && m_timer > 80)) {
+			if ((m_currentGame->m_players[currentPlayer]->m_controls.m_a == 1 && m_currentGame->m_settings->swapABConfirm[currentPlayer] == false && m_timer > 80) || (m_currentGame->m_players[currentPlayer]->m_controls.m_b == 1 && m_currentGame->m_settings->swapABConfirm[currentPlayer] == true && m_timer > 80)) {
 				m_data->snd.decide.play(m_data);
 				m_madeChoice[i] = true;
 				m_currentGame->m_players[i]->setCharacter(m_order[m_sel[i]]);
