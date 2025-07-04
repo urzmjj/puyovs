@@ -10,7 +10,7 @@ class FrontendGL : public QObject, public ppvs::Frontend {
 	Q_OBJECT
 
 public:
-	FrontendGL(QGLWidget* gl, GameAudio* audio, ppvs::FeInput& input, GLExtensions& ext, QObject* parent = nullptr);
+	FrontendGL(QGLWidget* gl, GameAudio* audio, ppvs::FeInput (&input)[1000], GLExtensions& ext, QObject* parent = nullptr);
 	ppvs::FeImage* loadImage(const char* nameu8) override;
 	ppvs::FeImage* loadImage(const std::string& nameu8) override;
 	ppvs::FeShader* loadShader(const char* source) override;
@@ -51,6 +51,6 @@ signals:
 private:
 	QGLWidget* gl;
 	GameAudio* audio;
-	ppvs::FeInput& input;
+	ppvs::FeInput (&input)[1000];
 	GLExtensions& ext;
 };

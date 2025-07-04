@@ -623,19 +623,22 @@ void GameManager::updateControls(GameWidget* game)
 {
 	Settings& settings = pvsApp->settings();
 	game->setControls(
+		0,
 		InputCondition(settings.string("controlsp1", "up", "up")),
 		InputCondition(settings.string("controlsp1", "down", "down")),
 		InputCondition(settings.string("controlsp1", "left", "left")),
 		InputCondition(settings.string("controlsp1", "right", "right")),
 		InputCondition(settings.string("controlsp1", "a", "x")),
 		InputCondition(settings.string("controlsp1", "b", "z")),
-		InputCondition(settings.string("controlsp1", "start", "return")),
+		InputCondition(settings.string("controlsp1", "start", "return")));
+	game->setControls(
+		1,
 		InputCondition(settings.string("controlsp2", "up", "i")),
 		InputCondition(settings.string("controlsp2", "down", "k")),
 		InputCondition(settings.string("controlsp2", "left", "j")),
 		InputCondition(settings.string("controlsp2", "right", "l")),
-		InputCondition(settings.string("controlsp2", "a", "n")),
-		InputCondition(settings.string("controlsp2", "b", "m")),
+		InputCondition(settings.string("controlsp2", "a", "m")),
+		InputCondition(settings.string("controlsp2", "b", "n")),
 		InputCondition(settings.string("controlsp2", "start", "space")));
 }
 

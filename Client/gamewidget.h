@@ -23,12 +23,9 @@ public:
 	ppvs::Game* game() const;
 	ChatWindow* chatWindow() const;
 
-	void setControls(InputCondition up, InputCondition down,
+	void setControls(int pl, InputCondition up, InputCondition down,
 		InputCondition left, InputCondition right,
-		InputCondition a, InputCondition b, InputCondition start,
-		InputCondition up2, InputCondition down2,
-		InputCondition left2, InputCondition right2,
-		InputCondition a2, InputCondition b2, InputCondition start2);
+		InputCondition a, InputCondition b, InputCondition start);
 	void replaceProxy(NetChannelProxy* newproxy);
 	void playMusic();
 signals:
@@ -56,7 +53,7 @@ protected:
 	ChatWindow* mChatWindow;
 	QAction* mToggleChat;
 	QAction* mFullScreen;
-	InputCondition mControls[14];
+	InputCondition mControls[1000][7];
 	NetChannelProxy* mProxy;
 	bool moveOnce;
 	QPoint parentPos;

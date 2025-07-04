@@ -1,10 +1,10 @@
 # Puyo VS [![Build](https://github.com/puyonexus/puyovs/actions/workflows/compile.yml/badge.svg)](https://github.com/puyonexus/puyovs/actions/workflows/compile.yml) [![Chat](https://img.shields.io/discord/991434636657971323?label=Chat)](https://discord.gg/cnUzgbFEXX)
 
-this vesrion was designed mostly around offline modes because i can't get a server
+A fork of Puyo VS 2 designed solely on implementing and improving offline play.
 
 
 
-
+## Original README
 
 Welcome to the Puyo VS 2 source code.
 

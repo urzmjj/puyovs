@@ -50,7 +50,7 @@ Player::Player(const PlayerType type, const int playerNum, const int totalPlayer
 	m_activeField = &m_fieldNormal;
 
 	// Controller
-	m_controls.init(m_playerNum, (m_playerNum == 0 && m_type == PlayerType::CPU)?PlayerType::HUMAN:m_type, m_currentGame->m_settings->recording);
+	m_controls.init(m_playerNum, /*(m_playerNum == 0 && m_type == PlayerType::CPU)?PlayerType::HUMAN:*/m_type, m_currentGame->m_settings->recording);
 
 	// Mover
 	m_movePuyo.init(m_data);

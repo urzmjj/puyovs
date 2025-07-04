@@ -489,7 +489,7 @@ void CharacterSelect::prepare()
 	// Objects for every player
 	for (int i = 0; i < m_numPlayers; i++) {
 		// Release buttons for cpu
-		if (m_currentGame->m_players[i]->getPlayerType() == CPU) {
+		if (m_currentGame->m_players[i]->getPlayerType() == CPU && i != 0) {
 			m_currentGame->m_players[i]->m_controls.release();
 		}
 
