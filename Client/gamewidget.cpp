@@ -91,15 +91,15 @@ ChatWindow* GameWidget::chatWindow() const
 	return mChatWindow;
 }
 
-void GameWidget::setControls(InputCondition up, InputCondition down, InputCondition left, InputCondition right, InputCondition a, InputCondition b, InputCondition start)
+void GameWidget::setControls(int pl, InputCondition up, InputCondition down, InputCondition left, InputCondition right, InputCondition a, InputCondition b, InputCondition start)
 {
-	mControls[0] = up;
-	mControls[1] = down;
-	mControls[2] = left;
-	mControls[3] = right;
-	mControls[4] = a;
-	mControls[5] = b;
-	mControls[6] = start;
+	mControls[pl][0] = up;
+	mControls[pl][1] = down;
+	mControls[pl][2] = left;
+	mControls[pl][3] = right;
+	mControls[pl][4] = a;
+	mControls[pl][5] = b;
+	mControls[pl][6] = start;
 }
 
 void GameWidget::replaceProxy(NetChannelProxy* newproxy)

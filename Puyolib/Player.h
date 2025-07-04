@@ -310,7 +310,7 @@ private:
 	int m_playerNum = 0;
 	float m_globalScale = 0.f; // Global scale for certain objects (for example sprite animations)
 
-	PlayerType m_type;
+	PlayerType m_type = PlayerType::HUMAN;
 	ScoreCounter m_scoreCounter;
 	FeverLight m_feverLight;
 	PuyoCharacter m_character;

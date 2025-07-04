@@ -41,7 +41,7 @@ void OfflineDialog::on_PlayButton_clicked()
 		mGameSettings->ruleSetInfo.colors = 0;
 
 	mGameSettings->ruleSetInfo.numPlayers = mGameSettings->ruleSetInfo.ruleSetType == ppvs::Rules::ENDLESS ? 1 : ui->PlayersSpinBox->value();
-	mGameSettings->numHumans = 1;
+	mGameSettings->ruleSetInfo.numHumans = mGameSettings->ruleSetInfo.ruleSetType == ppvs::Rules::ENDLESS ? ui->HumanPlayersSpinBox->value() != 0 : ui->HumanPlayersSpinBox->value();
 	mGameSettings->startWithCharacterSelect = true;
 	mGameSettings->useCpuPlayers = true;
 

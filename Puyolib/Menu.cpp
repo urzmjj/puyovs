@@ -83,8 +83,8 @@ void Menu::play()
 		m_data->snd.cursor.play(m_data);
 	}
 	// Choose
-    if ((controls->m_a == 1 && m_currentGame->m_settings->swapABConfirm == false) || (controls->m_b == 1 && m_currentGame->m_settings->swapABConfirm == true)) {
-		if (m_currentGame->m_settings->swapABConfirm == false) {
+    if ((controls->m_a == 1 && m_currentGame->m_settings->swapABConfirm[0] == false) || (controls->m_b == 1 && m_currentGame->m_settings->swapABConfirm[0] == true)) {
+		if (m_currentGame->m_settings->swapABConfirm[0] == false) {
 			controls->m_a++;
 		} else {
 			controls->m_b++;

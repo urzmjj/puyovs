@@ -396,7 +396,7 @@ void Game::setRules()
 		m_currentRuleSet->m_initialFeverCount = m_settings->ruleSetInfo.initialFeverCount;
 	if (m_settings->ruleSetInfo.quickDrop)
 		m_currentRuleSet->m_quickDrop = m_settings->ruleSetInfo.quickDrop;
-	if (m_settings->ruleSetInfo.colors >= 3 && m_settings->ruleSetInfo.colors <= 5) {
+	if (m_settings->ruleSetInfo.colors >= 2 && m_settings->ruleSetInfo.colors <= 5) {
 		for (const auto& player : m_players)
 			player->m_colors = m_settings->ruleSetInfo.colors;
 		m_settings->pickColors = false;
@@ -425,7 +425,7 @@ void Game::playGame()
 
 	// Set controller states
 	for (int i = 0; i < static_cast<int>(m_players.size()); i++) {
-		if (m_settings->useCpuPlayers && i >= m_settings->numHumans)
+		if (m_settings->useCpuPlayers && i >= m_settings->numHumans && !(i==0 && m_currentGameStatus != GameStatus::PLAYING))
 			break;
 
 		FeInput input = m_data->front->inputState(i);
@@ -474,7 +474,7 @@ void Game::playGame()
 		// Time is up
 		if (m_choiceTimer == 0) {
 			m_players[0]->m_controls.release();
-			if (m_settings->swapABConfirm == false) {
+			if (m_settings->swapABConfirm[0] == false) {
 				m_players[0]->m_controls.m_a = 1;
 			} else {
 				m_players[0]->m_controls.m_b = 1;
@@ -1160,6 +1160,7 @@ void Game::saveReplay() const
 		m_settings->ruleSetInfo.feverPower,
 		m_settings->ruleSetInfo.puyoToClear,
 		m_settings->ruleSetInfo.numPlayers,
+		m_settings->ruleSetInfo.numHumans,
 		m_settings->ruleSetInfo.quickDrop,
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
 	};
@@ -1305,7 +1306,9 @@ void Game::loadReplay(const std::string& filename)
 	m_settings->ruleSetInfo.feverPower = rrh.feverPower;
 	m_settings->ruleSetInfo.puyoToClear = rrh.puyoToClear;
 	m_settings->ruleSetInfo.numPlayers = rrh.numPlayers;
+	m_settings->ruleSetInfo.numHumans = rrh.numHumans;
 	m_settings->numPlayers = rrh.numPlayers;
+	m_settings->numHumans = rrh.numHumans;
 
 	// Set rules
 	setRules();

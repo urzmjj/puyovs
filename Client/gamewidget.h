@@ -23,7 +23,7 @@ public:
 	ppvs::Game* game() const;
 	ChatWindow* chatWindow() const;
 
-	void setControls(InputCondition up, InputCondition down,
+	void setControls(int pl, InputCondition up, InputCondition down,
 		InputCondition left, InputCondition right,
 		InputCondition a, InputCondition b, InputCondition start);
 	void replaceProxy(NetChannelProxy* newproxy);
@@ -53,7 +53,7 @@ protected:
 	ChatWindow* mChatWindow;
 	QAction* mToggleChat;
 	QAction* mFullScreen;
-	InputCondition mControls[7];
+	InputCondition mControls[1000][7];
 	NetChannelProxy* mProxy;
 	bool moveOnce;
 	QPoint parentPos;

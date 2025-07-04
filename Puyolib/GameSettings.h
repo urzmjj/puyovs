@@ -22,6 +22,7 @@ struct RuleSetInfo {
 	int feverPower = 0;
 	int puyoToClear = 0;
 	int numPlayers = 0;
+	int numHumans = 0;
 	int colors = 0;
 };
 
@@ -34,6 +35,7 @@ struct ReplayRuleSetHeader {
 	int feverPower;
 	int puyoToClear;
 	int numPlayers;
+	int numHumans;
 	int quickDrop;
 
 	int futureRules[10];
@@ -68,7 +70,7 @@ struct GameSettings {
 	std::map<PuyoCharacter, std::string> characterSetup;
 	std::map<std::string, std::string> controls;
 	PuyoCharacter defaultPuyoCharacter;
-	bool swapABConfirm;
+	bool swapABConfirm[1000];
 	bool useCharacterField;
 	bool startWithCharacterSelect;
 	bool pickColors;

@@ -4,7 +4,7 @@
 #include "fshadergl.h"
 #include "fsoundalib.h"
 
-FrontendGL::FrontendGL(QGLWidget* gl, GameAudio* audio, ppvs::FeInput& input, GLExtensions& ext, QObject* parent)
+FrontendGL::FrontendGL(QGLWidget* gl, GameAudio* audio, ppvs::FeInput (&input)[1000], GLExtensions& ext, QObject* parent)
 	: QObject(parent)
 	, gl(gl)
 	, audio(audio)
@@ -57,8 +57,8 @@ void FrontendGL::musicVolume(float volume, bool fever)
 
 ppvs::FeInput FrontendGL::inputState(int pl)
 {
-	if (pl == 0)
-		return input;
+	if (pl < 1000 && pl >= 0)
+		return input[pl];
 	return ppvs::FeInput();
 }
 

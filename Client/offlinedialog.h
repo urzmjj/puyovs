@@ -11,7 +11,7 @@ class OfflineDialog;
 
 namespace ppvs {
 enum class Rules : int;
-struct GameSettings;
+class GameSettings;
 }
 
 class Settings;

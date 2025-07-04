@@ -165,7 +165,7 @@ GameWidget* GameManager::createGame(ppvs::GameSettings* gs, const QString& roomN
 	gs->useCharacterField = settings.boolean("custom", "characterfield", true);
 
 	gs->numPlayers = gs->ruleSetInfo.numPlayers;
-	gs->numHumans = spectating || replay ? 0 : 1;
+	gs->numHumans = spectating || replay ? 0 : gs->ruleSetInfo.numHumans;
 	gs->spectating = spectating || replay;
 
 	if (replay) {
@@ -185,7 +185,15 @@ GameWidget* GameManager::createGame(ppvs::GameSettings* gs, const QString& roomN
 	gs->controls["1left"] = settings.string("controlsp1", "left", "left").toStdString();
 	gs->controls["1right"] = settings.string("controlsp1", "right", "right").toStdString();
 	gs->controls["1start"] = settings.string("controlsp1", "start", "return").toStdString();
-	gs->swapABConfirm = settings.boolean("controlsp1", "swapabconfirm", false);
+	gs->swapABConfirm[0] = settings.boolean("controlsp1", "swapabconfirm", false);
+	gs->controls["2a"] = settings.string("controlsp2", "a", "n").toStdString();
+	gs->controls["2b"] = settings.string("controlsp2", "b", "m").toStdString();
+	gs->controls["2up"] = settings.string("controlsp2", "up", "i").toStdString();
+	gs->controls["2down"] = settings.string("controlsp2", "down", "k").toStdString();
+	gs->controls["2left"] = settings.string("controlsp2", "left", "j").toStdString();
+	gs->controls["2right"] = settings.string("controlsp2", "right", "l").toStdString();
+	gs->controls["2start"] = settings.string("controlsp2", "start", "space").toStdString();
+	gs->swapABConfirm[1] = settings.boolean("controlsp2", "swapabconfirm", false);
 
 	gs->playMusic = settings.boolean("launcher", "enablemusic", true);
 	gs->playSound = settings.boolean("launcher", "enablesound", true);
@@ -615,6 +623,7 @@ void GameManager::updateControls(GameWidget* game)
 {
 	Settings& settings = pvsApp->settings();
 	game->setControls(
+		0,
 		InputCondition(settings.string("controlsp1", "up", "up")),
 		InputCondition(settings.string("controlsp1", "down", "down")),
 		InputCondition(settings.string("controlsp1", "left", "left")),
@@ -622,6 +631,15 @@ void GameManager::updateControls(GameWidget* game)
 		InputCondition(settings.string("controlsp1", "a", "x")),
 		InputCondition(settings.string("controlsp1", "b", "z")),
 		InputCondition(settings.string("controlsp1", "start", "return")));
+	game->setControls(
+		1,
+		InputCondition(settings.string("controlsp2", "up", "i")),
+		InputCondition(settings.string("controlsp2", "down", "k")),
+		InputCondition(settings.string("controlsp2", "left", "j")),
+		InputCondition(settings.string("controlsp2", "right", "l")),
+		InputCondition(settings.string("controlsp2", "a", "m")),
+		InputCondition(settings.string("controlsp2", "b", "n")),
+		InputCondition(settings.string("controlsp2", "start", "space")));
 }
 
 void GameManager::updateAllControls()

@@ -50,7 +50,7 @@ Player::Player(const PlayerType type, const int playerNum, const int totalPlayer
 	m_activeField = &m_fieldNormal;
 
 	// Controller
-	m_controls.init(m_playerNum, m_type, m_currentGame->m_settings->recording);
+	m_controls.init(m_playerNum, /*(m_playerNum == 0 && m_type == PlayerType::CPU)?PlayerType::HUMAN:*/m_type, m_currentGame->m_settings->recording);
 
 	// Mover
 	m_movePuyo.init(m_data);
@@ -84,8 +84,8 @@ Player::Player(const PlayerType type, const int playerNum, const int totalPlayer
 
 	// TEMP
 	// Field size may be set up by rule set. For now, use standard field size
-	m_properties.gridHeight = 28;
-	m_properties.gridWidth = 32;
+	m_properties.gridHeight = 28*12/12;
+	m_properties.gridWidth = 32*6/6;
 	m_properties.gridX = 6;
 	m_properties.gridY = 12 + 3; // Always add 3 extra layers
 	m_properties.scaleX = 1; // Local scale: only for local effects (bouncing and stuff)
@@ -989,7 +989,7 @@ void Player::chooseColor()
 	}
 
 	if (m_takeover) {
-		if (m_currentGame->m_settings->swapABConfirm == false) {
+		if (m_currentGame->m_settings->swapABConfirm[0] == false) {
 			m_controls.m_a = m_currentGame->m_players[0]->m_controls.m_a;
 		} else {
 			m_controls.m_b = m_currentGame->m_players[0]->m_controls.m_b;
@@ -1048,7 +1048,7 @@ void Player::chooseColor()
 
 		// Automatic choice
 		if (m_currentGame->m_colorTimer == 1 && m_colorMenuTimer > 25 && m_pickedColor == false) {
-			if (m_currentGame->m_settings->swapABConfirm == false) {
+			if (m_currentGame->m_settings->swapABConfirm[0] == false) {
 				m_controls.m_a = 1;
 			} else {
 				m_controls.m_b = 1;
@@ -1056,17 +1056,17 @@ void Player::chooseColor()
 		}
 
 		// Make choice
-		if ((m_controls.m_a == 1 && m_currentGame->m_settings->swapABConfirm == false && m_colorMenuTimer > 25) || ((m_controls.m_b == 1 && m_currentGame->m_settings->swapABConfirm == true && m_colorMenuTimer > 25))) {
+		if ((m_controls.m_a == 1 && m_currentGame->m_settings->swapABConfirm[m_playerNum] == false && m_colorMenuTimer > 25) || ((m_controls.m_b == 1 && m_currentGame->m_settings->swapABConfirm[m_playerNum] == true && m_colorMenuTimer > 25))) {
 			m_normalGarbage.gq += m_normalGarbage.cq;
 			m_normalGarbage.cq = 0;
 			m_data->snd.decide.play(m_data);
-			if (m_currentGame->m_settings->swapABConfirm == false) {
+			if (m_currentGame->m_settings->swapABConfirm[m_playerNum] == false) {
 				m_controls.m_a++;
 			} else {
 				m_controls.m_b++;
 			}
 			if (m_takeover) {
-				if (m_currentGame->m_settings->swapABConfirm == false) {
+				if (m_currentGame->m_settings->swapABConfirm[0] == false) {
 					m_currentGame->m_players[0]->m_controls.m_a++;
 				} else {
 					m_currentGame->m_players[0]->m_controls.m_b++;

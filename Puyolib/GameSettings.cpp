@@ -22,6 +22,7 @@ void RuleSetInfo::setRules(const Rules type)
 	feverPower = 100;
 	puyoToClear = 4;
 	numPlayers = 2;
+	numHumans = 2;
 	colors = 4; // Default: cannot choose colors
 	ruleSetType = type;
 	switch (type) {
@@ -47,7 +48,7 @@ GameSettings::GameSettings(const RuleSetInfo& ruleSetInfo)
 {
 	// Set default values
 	numPlayers = 2;
-	numHumans = 1;
+	numHumans = 2;
 
 	language = "EN";
 	playSound = true;
@@ -58,7 +59,7 @@ GameSettings::GameSettings(const RuleSetInfo& ruleSetInfo)
 	defaultPuyoCharacter = ARLE;
 	useCharacterField = true;
 	startWithCharacterSelect = true;
-	swapABConfirm = false;
+	for(int i = 0; i < 1000; i++)swapABConfirm[i] = false;
 	pickColors = true;
 	useCpuPlayers = false;
 	spectating = false;

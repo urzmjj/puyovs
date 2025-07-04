@@ -103,7 +103,7 @@ struct GameWidgetGLPriv {
 	GameAudio* audio;
 	ppvs::AssetManager* am;
 	ilib::Driver* inputDriver;
-	ppvs::FeInput inputState;
+	ppvs::FeInput inputState[1000];
 	quint64 nextFrame;
 	bool ready;
 };
@@ -132,7 +132,7 @@ GameWidgetGL::GameWidgetGL(ppvs::Game* game, NetChannelProxy* proxy, GameAudio* 
 	setFocusProxy(d->gl);
 	d->gl->setFocusPolicy(Qt::StrongFocus);
 
-	memset(&d->inputState, 0, sizeof(ppvs::FeInput));
+	memset(&d->inputState, 0, sizeof(ppvs::FeInput[1000]));
 
 #if defined(Q_OS_MAC)
 	// Workaround for MacOSX resize.
@@ -167,18 +167,21 @@ GameWidgetGL::~GameWidgetGL()
 void GameWidgetGL::keyPressEvent(QKeyEvent* k)
 {
 	InputCondition::MatchResult r;
-#define HANDLE_KEY(i, button)                         \
-	r = mControls[i].match(k);                       \
-	if (r == InputCondition::MatchResult::MatchDown) \
-	d->inputState.button = true
-	HANDLE_KEY(0, up);
-	HANDLE_KEY(1, down);
-	HANDLE_KEY(2, left);
-	HANDLE_KEY(3, right);
-	HANDLE_KEY(4, a);
-	HANDLE_KEY(5, b);
-	HANDLE_KEY(6, start);
-#undef HANDLE_KEY
+	for(int y = 0; y < 1000; y++){
+		#define HANDLE_KEY(i, button)                         \
+			r = mControls[y][i].match(k);                       \
+			if (r == InputCondition::MatchResult::MatchDown) \
+			d->inputState[y].button = true
+				HANDLE_KEY(0, up);
+				HANDLE_KEY(1, down);
+				HANDLE_KEY(2, left);
+				HANDLE_KEY(3, right);
+				HANDLE_KEY(4, a);
+				HANDLE_KEY(5, b);
+				HANDLE_KEY(6, start);
+		#undef HANDLE_KEY
+	}
+
 
 	// I'm putting this here for the moment.
 	// This is not part of Puyolib, because it may be hard
@@ -229,18 +232,20 @@ void GameWidgetGL::keyPressEvent(QKeyEvent* k)
 void GameWidgetGL::keyReleaseEvent(QKeyEvent* k)
 {
 	InputCondition::MatchResult r;
-#define HANDLE_KEY(i, button)          \
-	r = mControls[i].match(k);        \
-	if (r == InputCondition::MatchResult::MatchUp) \
-	d->inputState.button = false
-	HANDLE_KEY(0, up);
-	HANDLE_KEY(1, down);
-	HANDLE_KEY(2, left);
-	HANDLE_KEY(3, right);
-	HANDLE_KEY(4, a);
-	HANDLE_KEY(5, b);
-	HANDLE_KEY(6, start);
-#undef HANDLE_KEY
+	for(int y = 0; y < 1000; y++){
+		#define HANDLE_KEY(i, button)          \
+			r = mControls[y][i].match(k);        \
+			if (r == InputCondition::MatchResult::MatchUp) \
+			d->inputState[y].button = false
+			HANDLE_KEY(0, up);
+			HANDLE_KEY(1, down);
+			HANDLE_KEY(2, left);
+			HANDLE_KEY(3, right);
+			HANDLE_KEY(4, a);
+			HANDLE_KEY(5, b);
+			HANDLE_KEY(6, start);
+		#undef HANDLE_KEY
+	}
 }
 
 void GameWidgetGL::paintEvent(QPaintEvent*)
@@ -308,20 +313,22 @@ void GameWidgetGL::process()
 			d->inputDriver->process();
 			ilib::InputEvent e;
 			while (d->inputDriver->getEvent(&e)) {
-#define HANDLE_JOY(i, button)                 \
-	r = mControls[i].match(e);               \
-	if (r == InputCondition::MatchResult::MatchUp)        \
-		d->inputState.button = false;        \
-	else if (r == InputCondition::MatchResult::MatchDown) \
-		d->inputState.button = true;
-				HANDLE_JOY(0, up);
-				HANDLE_JOY(1, down);
-				HANDLE_JOY(2, left);
-				HANDLE_JOY(3, right);
-				HANDLE_JOY(4, a);
-				HANDLE_JOY(5, b);
-				HANDLE_JOY(6, start);
-#undef HANDLE_JOY
+				for(int y = 0; y < 1000; y++){
+					#define HANDLE_JOY(i, button)                 \
+					r = mControls[y][i].match(e);               \
+					if (r == InputCondition::MatchResult::MatchUp)        \
+						d->inputState[y].button = false;        \
+					else if (r == InputCondition::MatchResult::MatchDown) \
+						d->inputState[y].button = true;
+								HANDLE_JOY(0, up);
+								HANDLE_JOY(1, down);
+								HANDLE_JOY(2, left);
+								HANDLE_JOY(3, right);
+								HANDLE_JOY(4, a);
+								HANDLE_JOY(5, b);
+								HANDLE_JOY(6, start);
+					#undef HANDLE_JOY
+				}
 			}
 		}
 
