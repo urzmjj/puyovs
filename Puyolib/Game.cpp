@@ -425,9 +425,8 @@ void Game::playGame()
 
 	// Set controller states
 	for (int i = 0; i < static_cast<int>(m_players.size()); i++) {
-		if (m_settings->useCpuPlayers && i >= m_settings->numHumans && !(i==0 && m_currentGameStatus != GameStatus::PLAYING))
+		if (m_settings->useCpuPlayers && i >= m_settings->numHumans && !(i==0 && m_menuSelect != 0))
 			break;
-
 		FeInput input = m_data->front->inputState(i);
 		m_players[i]->m_controls.setState(input, m_data->matchTimer);
 	}
@@ -582,6 +581,9 @@ void Game::playGame()
 	rankedMatch();
 
 	// Main game
+	if(m_settings->numHumans==0 &&  m_menuSelect == 0 && !m_players[0]->m_cpuAi){
+		m_players[0]->m_cpuAi = new AI(m_players[0]);
+	}
 	for (const auto& player : m_players) {
 		player->play();
 	}

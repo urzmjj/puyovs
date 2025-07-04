@@ -682,7 +682,8 @@ void Player::play()
 		m_hasMoved = true;
 	}
 
-	if (m_currentPhase == Phase::MOVE && m_cpuAi) {
+	if (m_currentPhase == Phase::MOVE && (m_cpuAi||m_currentGame->m_settings->numHumans==0)) {
+		if (!m_cpuAi) m_cpuAi = new AI(this);
 		// Perform AI movement
 		cpuMove();
 	}
@@ -866,7 +867,10 @@ void Player::getReady()
 {
 	m_charHolderSprite.setVisible(false);
 	m_currentCharacterSprite.setVisible(false);
-
+	if(m_currentGame->m_settings->numHumans==0){
+		m_type = PlayerType::CPU;
+		if(!m_cpuAi) m_cpuAi = new AI(this);
+	}
 	// Wait until timer hits go
 	if (m_readyGoTimer >= 120) {
 		if (m_currentGame->m_settings->recording == RecordState::RECORDING) {
@@ -1174,7 +1178,10 @@ void Player::prepare()
 		mpt = getFromDropPattern(m_character, m_turns);
 	}
 	m_movePuyo.prepare(mpt, this, color1, color2);
-
+	if(m_currentGame->m_settings->numHumans==0){
+		m_type = PlayerType::CPU;
+		if(!m_cpuAi) m_cpuAi = new AI(this);
+	}
 	if (m_cpuAi) {
 		// Determine best chain
 		m_cpuAi->prepare(mpt, color1, color2);
