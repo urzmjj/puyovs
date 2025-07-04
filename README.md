@@ -4,7 +4,7 @@ A fork of Puyo VS 2 designed solely on implementing and improving offline play.
 
 
 
-## Original README
+# Original README
 
 Welcome to the Puyo VS 2 source code.
 
