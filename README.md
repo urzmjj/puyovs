@@ -5,7 +5,7 @@ A fork of Puyo VS 2 designed solely on implementing and improving offline play.
 ### TODO:
 - [X] Add 0-player support
 - [ ] Add control customization for player 2 in offline multiplayer
-- [ ] Test online
+- [ ] ~~Test online~~
 
 # Original README
 
