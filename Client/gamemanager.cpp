@@ -186,8 +186,8 @@ GameWidget* GameManager::createGame(ppvs::GameSettings* gs, const QString& roomN
 	gs->controls["1right"] = settings.string("controlsp1", "right", "right").toStdString();
 	gs->controls["1start"] = settings.string("controlsp1", "start", "return").toStdString();
 	gs->swapABConfirm[0] = settings.boolean("controlsp1", "swapabconfirm", false);
-	gs->controls["2a"] = settings.string("controlsp2", "a", "n").toStdString();
-	gs->controls["2b"] = settings.string("controlsp2", "b", "m").toStdString();
+	gs->controls["2a"] = settings.string("controlsp2", "a", "m").toStdString();
+	gs->controls["2b"] = settings.string("controlsp2", "b", "n").toStdString();
 	gs->controls["2up"] = settings.string("controlsp2", "up", "i").toStdString();
 	gs->controls["2down"] = settings.string("controlsp2", "down", "k").toStdString();
 	gs->controls["2left"] = settings.string("controlsp2", "left", "j").toStdString();
