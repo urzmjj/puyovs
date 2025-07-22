@@ -24,12 +24,54 @@ SettingsDialog::SettingsDialog(LanguageManager* lm, ppvs::AssetManager* am, QWid
 	ui->PlaylistView->setModel(normalPlaylistModel);
 
 	characterComboBoxList = QList<QComboBox*>()
-		<< ui->Char0ComboBox << ui->Char1ComboBox << ui->Char2ComboBox << ui->Char3ComboBox
-		<< ui->Char4ComboBox << ui->Char5ComboBox << ui->Char6ComboBox << ui->Char7ComboBox
-		<< ui->Char8ComboBox << ui->Char9ComboBox << ui->Char10ComboBox << ui->Char11ComboBox
-		<< ui->Char12ComboBox << ui->Char13ComboBox << ui->Char14ComboBox << ui->Char15ComboBox
-		<< ui->Char16ComboBox << ui->Char17ComboBox << ui->Char18ComboBox << ui->Char19ComboBox
-		<< ui->Char20ComboBox << ui->Char21ComboBox << ui->Char22ComboBox << ui->Char23ComboBox;
+		<< ui->Char0AComboBox << ui->Char1AComboBox << ui->Char2AComboBox << ui->Char3AComboBox
+		<< ui->Char4AComboBox << ui->Char5AComboBox << ui->Char6AComboBox << ui->Char7AComboBox
+		<< ui->Char8AComboBox << ui->Char9AComboBox << ui->Char10AComboBox << ui->Char11AComboBox
+		<< ui->Char12AComboBox << ui->Char13AComboBox << ui->Char14AComboBox << ui->Char15AComboBox
+		<< ui->Char16AComboBox << ui->Char17AComboBox << ui->Char18AComboBox << ui->Char19AComboBox
+		<< ui->Char20AComboBox << ui->Char21AComboBox << ui->Char22AComboBox << ui->Char23AComboBox
+		<< ui->Char0BComboBox << ui->Char1BComboBox << ui->Char2BComboBox << ui->Char3BComboBox
+		<< ui->Char4BComboBox << ui->Char5BComboBox << ui->Char6BComboBox << ui->Char7BComboBox
+		<< ui->Char8BComboBox << ui->Char9BComboBox << ui->Char10BComboBox << ui->Char11BComboBox
+		<< ui->Char12BComboBox << ui->Char13BComboBox << ui->Char14BComboBox << ui->Char15BComboBox
+		<< ui->Char16BComboBox << ui->Char17BComboBox << ui->Char18BComboBox << ui->Char19BComboBox
+		<< ui->Char20BComboBox << ui->Char21BComboBox << ui->Char22BComboBox << ui->Char23BComboBox
+		<< ui->Char0CComboBox << ui->Char1CComboBox << ui->Char2CComboBox << ui->Char3CComboBox
+		<< ui->Char4CComboBox << ui->Char5CComboBox << ui->Char6CComboBox << ui->Char7CComboBox
+		<< ui->Char8CComboBox << ui->Char9CComboBox << ui->Char10CComboBox << ui->Char11CComboBox
+		<< ui->Char12CComboBox << ui->Char13CComboBox << ui->Char14CComboBox << ui->Char15CComboBox
+		<< ui->Char16CComboBox << ui->Char17CComboBox << ui->Char18CComboBox << ui->Char19CComboBox
+		<< ui->Char20CComboBox << ui->Char21CComboBox << ui->Char22CComboBox << ui->Char23CComboBox
+		<< ui->Char0DComboBox << ui->Char1DComboBox << ui->Char2DComboBox << ui->Char3DComboBox
+		<< ui->Char4DComboBox << ui->Char5DComboBox << ui->Char6DComboBox << ui->Char7DComboBox
+		<< ui->Char8DComboBox << ui->Char9DComboBox << ui->Char10DComboBox << ui->Char11DComboBox
+		<< ui->Char12DComboBox << ui->Char13DComboBox << ui->Char14DComboBox << ui->Char15DComboBox
+		<< ui->Char16DComboBox << ui->Char17DComboBox << ui->Char18DComboBox << ui->Char19DComboBox
+		<< ui->Char20DComboBox << ui->Char21DComboBox << ui->Char22DComboBox << ui->Char23DComboBox
+		<< ui->Char0EComboBox << ui->Char1EComboBox << ui->Char2EComboBox << ui->Char3EComboBox
+		<< ui->Char4EComboBox << ui->Char5EComboBox << ui->Char6EComboBox << ui->Char7EComboBox
+		<< ui->Char8EComboBox << ui->Char9EComboBox << ui->Char10EComboBox << ui->Char11EComboBox
+		<< ui->Char12EComboBox << ui->Char13EComboBox << ui->Char14EComboBox << ui->Char15EComboBox
+		<< ui->Char16EComboBox << ui->Char17EComboBox << ui->Char18EComboBox << ui->Char19EComboBox
+		<< ui->Char20EComboBox << ui->Char21EComboBox << ui->Char22EComboBox << ui->Char23EComboBox
+		<< ui->Char0FComboBox << ui->Char1FComboBox << ui->Char2FComboBox << ui->Char3FComboBox
+		<< ui->Char4FComboBox << ui->Char5FComboBox << ui->Char6FComboBox << ui->Char7FComboBox
+		<< ui->Char8FComboBox << ui->Char9FComboBox << ui->Char10FComboBox << ui->Char11FComboBox
+		<< ui->Char12FComboBox << ui->Char13FComboBox << ui->Char14FComboBox << ui->Char15FComboBox
+		<< ui->Char16FComboBox << ui->Char17FComboBox << ui->Char18FComboBox << ui->Char19FComboBox
+		<< ui->Char20FComboBox << ui->Char21FComboBox << ui->Char22FComboBox << ui->Char23FComboBox
+		<< ui->Char0GComboBox << ui->Char1GComboBox << ui->Char2GComboBox << ui->Char3GComboBox
+		<< ui->Char4GComboBox << ui->Char5GComboBox << ui->Char6GComboBox << ui->Char7GComboBox
+		<< ui->Char8GComboBox << ui->Char9GComboBox << ui->Char10GComboBox << ui->Char11GComboBox
+		<< ui->Char12GComboBox << ui->Char13GComboBox << ui->Char14GComboBox << ui->Char15GComboBox
+		<< ui->Char16GComboBox << ui->Char17GComboBox << ui->Char18GComboBox << ui->Char19GComboBox
+		<< ui->Char20GComboBox << ui->Char21GComboBox << ui->Char22GComboBox << ui->Char23GComboBox
+		<< ui->Char0HComboBox << ui->Char1HComboBox << ui->Char2HComboBox << ui->Char3HComboBox
+		<< ui->Char4HComboBox << ui->Char5HComboBox << ui->Char6HComboBox << ui->Char7HComboBox
+		<< ui->Char8HComboBox << ui->Char9HComboBox << ui->Char10HComboBox << ui->Char11HComboBox
+		<< ui->Char12HComboBox << ui->Char13HComboBox << ui->Char14HComboBox << ui->Char15HComboBox
+		<< ui->Char16HComboBox << ui->Char17HComboBox << ui->Char18HComboBox << ui->Char19HComboBox
+		<< ui->Char20HComboBox << ui->Char21HComboBox << ui->Char22HComboBox << ui->Char23HComboBox;
 
 	languageManager = lm;
 	languagesModified();
@@ -86,6 +128,7 @@ void SettingsDialog::load()
 	ui->QuickDropCheckBox->setChecked(settings.boolean("rules", "quickdrop", false));
 
 	// Controls
+	ui->PlayerInputLineEdit->setText("1");
 	ui->UpInput->setText(settings.string("controlsp1", "up", "up"));
 	ui->DownInput->setText(settings.string("controlsp1", "down", "down"));
 	ui->LeftInput->setText(settings.string("controlsp1", "left", "left"));
@@ -156,14 +199,15 @@ void SettingsDialog::save()
 	settings.setBoolean("rules", "quickdrop", ui->QuickDropCheckBox->isChecked());
 
 	// Controls
-	settings.setString("controlsp1", "up", ui->UpInput->text());
-	settings.setString("controlsp1", "down", ui->DownInput->text());
-	settings.setString("controlsp1", "left", ui->LeftInput->text());
-	settings.setString("controlsp1", "right", ui->RightInput->text());
-	settings.setString("controlsp1", "a", ui->AInput->text());
-	settings.setString("controlsp1", "b", ui->BInput->text());
-	settings.setString("controlsp1", "start", ui->StartInput->text());
-	settings.setBoolean("controlsp1", "swapabconfirm", ui->SwapABConfirmCheckBox->isChecked());
+	QString a = ui->PlayerInputLineEdit->text();
+	settings.setString("controlsp"+a, "up", ui->UpInput->text());
+	settings.setString("controlsp"+a, "down", ui->DownInput->text());
+	settings.setString("controlsp"+a, "left", ui->LeftInput->text());
+	settings.setString("controlsp"+a, "right", ui->RightInput->text());
+	settings.setString("controlsp"+a, "a", ui->AInput->text());
+	settings.setString("controlsp"+a, "b", ui->BInput->text());
+	settings.setString("controlsp"+a, "start", ui->StartInput->text());
+	settings.setBoolean("controlsp"+a, "swapabconfirm", ui->SwapABConfirmCheckBox->isChecked());
 
 	// Customization
 	settings.setString("custom", "background", ui->BackgroundComboBox->currentText());
@@ -408,4 +452,17 @@ void SettingsDialog::on_MusicVolumeHorizontalSlider_sliderMoved(int value)
 void SettingsDialog::on_SoundVolumeHorizontalSlider_sliderMoved(int value)
 {
 	alib::open()->setSoundVolume(value / 100.0f);
+}
+
+void SettingsDialog::on_PlayerInputLineEdit_editingFinished(){
+	Settings& settings = pvsApp->settings();
+	QString a = ui->PlayerInputLineEdit->text();
+	ui->UpInput->setText(settings.string("controlsp"+a, "up", "up"));
+	ui->DownInput->setText(settings.string("controlsp"+a, "down", "down"));
+	ui->LeftInput->setText(settings.string("controlsp"+a, "left", "left"));
+	ui->RightInput->setText(settings.string("controlsp"+a, "right", "right"));
+	ui->AInput->setText(settings.string("controlsp"+a, "a", "x"));
+	ui->BInput->setText(settings.string("controlsp"+a, "b", "z"));
+	ui->StartInput->setText(settings.string("controlsp"+a, "start", "return"));
+	ui->SwapABConfirmCheckBox->setChecked(settings.boolean("controlsp"+a, "swapabconfirm", false));
 }

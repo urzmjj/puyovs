@@ -46,6 +46,7 @@ private slots:
 	void on_PlaylistRemoveButton_clicked() const;
 	void on_MusicVolumeHorizontalSlider_sliderMoved(int value);
 	void on_SoundVolumeHorizontalSlider_sliderMoved(int value);
+	void on_PlayerInputLineEdit_editingFinished();
 
 private:
 	void fetchFileLists();

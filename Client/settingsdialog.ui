@@ -619,85 +619,101 @@
        </item>
       </layout>
      </widget>
+
      <widget class="QWidget" name="ControlsTab">
       <attribute name="title">
        <string comment="TitleControls">Controls</string>
       </attribute>
+
       <layout class="QFormLayout" name="formLayout_2">
        <property name="fieldGrowthPolicy">
         <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
        </property>
        <item row="0" column="0">
+        <widget class="QLabel" name="PlayerInputLabel">
+         <property name="text">
+          <string comment="Player Number">Player Number</string>
+         </property>
+        </widget>
+       </item>      
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="PlayerInputLineEdit">
+          <property name="InputMask">
+            <string>0000</string>
+          </property>
+        </widget>
+       </item>      
+       <item row="1" column="0">
         <widget class="QLabel" name="UpLabel">
          <property name="text">
           <string comment="Up">Up</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="0">
+       <item row="2" column="0">
         <widget class="QLabel" name="DownLabel">
          <property name="text">
           <string comment="Down">Down</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="0">
+       <item row="3" column="0">
         <widget class="QLabel" name="LeftLabel">
          <property name="text">
           <string comment="Left">Left</string>
          </property>
         </widget>
        </item>
-       <item row="3" column="0">
+       <item row="4" column="0">
         <widget class="QLabel" name="RightLabel">
          <property name="text">
           <string comment="Right">Right</string>
          </property>
         </widget>
        </item>
-       <item row="4" column="0">
+       <item row="5" column="0">
         <widget class="QLabel" name="ALabel">
          <property name="text">
           <string comment="A">A</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="0">
+       <item row="6" column="0">
         <widget class="QLabel" name="BLabel">
          <property name="text">
           <string comment="B">B</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="1">
+       <item row="1" column="1">
         <widget class="InputWidget" name="UpInput" native="true"/>
        </item>
-       <item row="1" column="1">
+       <item row="2" column="1">
         <widget class="InputWidget" name="DownInput" native="true"/>
        </item>
-       <item row="2" column="1">
+       <item row="3" column="1">
         <widget class="InputWidget" name="LeftInput" native="true"/>
        </item>
-       <item row="3" column="1">
+       <item row="4" column="1">
         <widget class="InputWidget" name="RightInput" native="true"/>
        </item>
-       <item row="4" column="1">
+       <item row="5" column="1">
         <widget class="InputWidget" name="AInput" native="true"/>
        </item>
-       <item row="6" column="0">
+       <item row="7" column="0">
         <widget class="QLabel" name="StartLabel">
          <property name="text">
           <string>Start</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="1">
+       <item row="6" column="1">
         <widget class="InputWidget" name="BInput" native="true"/>
        </item>
-       <item row="6" column="1">
+       <item row="7" column="1">
         <widget class="InputWidget" name="StartInput" native="true"/>
        </item>
-       <item row="7" column="0">
+       <item row="8" column="0">
         <spacer name="SwapABConfirmSpacer">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
@@ -710,7 +726,7 @@
          </property>
         </spacer>
        </item>
-       <item row="7" column="1">
+       <item row="8" column="1">
         <widget class="QCheckBox" name="SwapABConfirmCheckBox">
          <property name="text">
           <string>Swap A/B Confirmation</string>
@@ -721,7 +737,9 @@
         </widget>
        </item>
       </layout>
+
      </widget>
+
      <widget class="QWidget" name="CustomizationTab">
       <attribute name="title">
        <string comment="TitleCustomization">Customization</string>
@@ -799,10 +817,7 @@
                <height>560</height>
               </rect>
              </property>
-             <layout class="QFormLayout" name="formLayout_3">
-              <property name="fieldGrowthPolicy">
-               <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-              </property>
+             <layout class="QGridLayout" name="gridLayout_3">
               <item row="0" column="0">
                <widget class="QLabel" name="Char0Label">
                 <property name="text">
@@ -811,7 +826,7 @@
                </widget>
               </item>
               <item row="0" column="1">
-               <widget class="QComboBox" name="Char0ComboBox"/>
+               <widget class="QComboBox" name="Char0AComboBox"/>
               </item>
               <item row="1" column="0">
                <widget class="QLabel" name="Char1Label">
@@ -821,7 +836,7 @@
                </widget>
               </item>
               <item row="1" column="1">
-               <widget class="QComboBox" name="Char1ComboBox"/>
+               <widget class="QComboBox" name="Char1AComboBox"/>
               </item>
               <item row="2" column="0">
                <widget class="QLabel" name="Char2Label">
@@ -831,7 +846,7 @@
                </widget>
               </item>
               <item row="2" column="1">
-               <widget class="QComboBox" name="Char2ComboBox"/>
+               <widget class="QComboBox" name="Char2AComboBox"/>
               </item>
               <item row="3" column="0">
                <widget class="QLabel" name="Char3Label">
@@ -841,7 +856,7 @@
                </widget>
               </item>
               <item row="3" column="1">
-               <widget class="QComboBox" name="Char3ComboBox"/>
+               <widget class="QComboBox" name="Char3AComboBox"/>
               </item>
               <item row="4" column="0">
                <widget class="QLabel" name="Char4Label">
@@ -851,10 +866,10 @@
                </widget>
               </item>
               <item row="4" column="1">
-               <widget class="QComboBox" name="Char4ComboBox"/>
+               <widget class="QComboBox" name="Char4AComboBox"/>
               </item>
               <item row="5" column="1">
-               <widget class="QComboBox" name="Char5ComboBox"/>
+               <widget class="QComboBox" name="Char5AComboBox"/>
               </item>
               <item row="6" column="0">
                <widget class="QLabel" name="Char6Label">
@@ -864,7 +879,7 @@
                </widget>
               </item>
               <item row="6" column="1">
-               <widget class="QComboBox" name="Char6ComboBox"/>
+               <widget class="QComboBox" name="Char6AComboBox"/>
               </item>
               <item row="7" column="0">
                <widget class="QLabel" name="Char7Label">
@@ -874,7 +889,7 @@
                </widget>
               </item>
               <item row="7" column="1">
-               <widget class="QComboBox" name="Char7ComboBox"/>
+               <widget class="QComboBox" name="Char7AComboBox"/>
               </item>
               <item row="8" column="0">
                <widget class="QLabel" name="Char8Label">
@@ -884,7 +899,7 @@
                </widget>
               </item>
               <item row="8" column="1">
-               <widget class="QComboBox" name="Char8ComboBox"/>
+               <widget class="QComboBox" name="Char8AComboBox"/>
               </item>
               <item row="9" column="0">
                <widget class="QLabel" name="Char9Label">
@@ -894,7 +909,7 @@
                </widget>
               </item>
               <item row="9" column="1">
-               <widget class="QComboBox" name="Char9ComboBox"/>
+               <widget class="QComboBox" name="Char9AComboBox"/>
               </item>
               <item row="10" column="0">
                <widget class="QLabel" name="Char10Label">
@@ -904,7 +919,7 @@
                </widget>
               </item>
               <item row="10" column="1">
-               <widget class="QComboBox" name="Char10ComboBox"/>
+               <widget class="QComboBox" name="Char10AComboBox"/>
               </item>
               <item row="11" column="0">
                <widget class="QLabel" name="Char11Label">
@@ -914,7 +929,7 @@
                </widget>
               </item>
               <item row="11" column="1">
-               <widget class="QComboBox" name="Char11ComboBox"/>
+               <widget class="QComboBox" name="Char11AComboBox"/>
               </item>
               <item row="12" column="0">
                <widget class="QLabel" name="Char12Label">
@@ -924,7 +939,7 @@
                </widget>
               </item>
               <item row="12" column="1">
-               <widget class="QComboBox" name="Char12ComboBox"/>
+               <widget class="QComboBox" name="Char12AComboBox"/>
               </item>
               <item row="13" column="0">
                <widget class="QLabel" name="Char13Label">
@@ -934,7 +949,7 @@
                </widget>
               </item>
               <item row="13" column="1">
-               <widget class="QComboBox" name="Char13ComboBox"/>
+               <widget class="QComboBox" name="Char13AComboBox"/>
               </item>
               <item row="14" column="0">
                <widget class="QLabel" name="Char14Label">
@@ -944,7 +959,7 @@
                </widget>
               </item>
               <item row="14" column="1">
-               <widget class="QComboBox" name="Char14ComboBox"/>
+               <widget class="QComboBox" name="Char14AComboBox"/>
               </item>
               <item row="15" column="0">
                <widget class="QLabel" name="Char15Label">
@@ -954,7 +969,7 @@
                </widget>
               </item>
               <item row="15" column="1">
-               <widget class="QComboBox" name="Char15ComboBox"/>
+               <widget class="QComboBox" name="Char15AComboBox"/>
               </item>
               <item row="16" column="0">
                <widget class="QLabel" name="Char16Label">
@@ -964,7 +979,7 @@
                </widget>
               </item>
               <item row="16" column="1">
-               <widget class="QComboBox" name="Char16ComboBox"/>
+               <widget class="QComboBox" name="Char16AComboBox"/>
               </item>
               <item row="17" column="0">
                <widget class="QLabel" name="Char17Label">
@@ -974,7 +989,7 @@
                </widget>
               </item>
               <item row="17" column="1">
-               <widget class="QComboBox" name="Char17ComboBox"/>
+               <widget class="QComboBox" name="Char17AComboBox"/>
               </item>
               <item row="18" column="0">
                <widget class="QLabel" name="Char18Label">
@@ -984,7 +999,7 @@
                </widget>
               </item>
               <item row="18" column="1">
-               <widget class="QComboBox" name="Char18ComboBox"/>
+               <widget class="QComboBox" name="Char18AComboBox"/>
               </item>
               <item row="19" column="0">
                <widget class="QLabel" name="Char19Label">
@@ -994,7 +1009,7 @@
                </widget>
               </item>
               <item row="19" column="1">
-               <widget class="QComboBox" name="Char19ComboBox"/>
+               <widget class="QComboBox" name="Char19AComboBox"/>
               </item>
               <item row="20" column="0">
                <widget class="QLabel" name="Char20Label">
@@ -1004,7 +1019,7 @@
                </widget>
               </item>
               <item row="20" column="1">
-               <widget class="QComboBox" name="Char20ComboBox"/>
+               <widget class="QComboBox" name="Char20AComboBox"/>
               </item>
               <item row="21" column="0">
                <widget class="QLabel" name="Char21Label">
@@ -1014,7 +1029,7 @@
                </widget>
               </item>
               <item row="21" column="1">
-               <widget class="QComboBox" name="Char21ComboBox"/>
+               <widget class="QComboBox" name="Char21AComboBox"/>
               </item>
               <item row="22" column="0">
                <widget class="QLabel" name="Char22Label">
@@ -1024,7 +1039,7 @@
                </widget>
               </item>
               <item row="22" column="1">
-               <widget class="QComboBox" name="Char22ComboBox"/>
+               <widget class="QComboBox" name="Char22AComboBox"/>
               </item>
               <item row="23" column="0">
                <widget class="QLabel" name="Char23Label">
@@ -1034,7 +1049,7 @@
                </widget>
               </item>
               <item row="23" column="1">
-               <widget class="QComboBox" name="Char23ComboBox"/>
+               <widget class="QComboBox" name="Char23AComboBox"/>
               </item>
               <item row="5" column="0">
                <widget class="QLabel" name="Char5Label">
@@ -1042,6 +1057,343 @@
                  <string comment="Char6">Carbuncle</string>
                 </property>
                </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QComboBox" name="Char0BComboBox"/>
+              </item>              <item row="0" column="3">
+               <widget class="QComboBox" name="Char0CComboBox"/>
+              </item>              <item row="0" column="4">
+               <widget class="QComboBox" name="Char0DComboBox"/>
+              </item>              <item row="0" column="5">
+               <widget class="QComboBox" name="Char0EComboBox"/>
+              </item>              <item row="0" column="6">
+               <widget class="QComboBox" name="Char0FComboBox"/>
+              </item>              <item row="0" column="7">
+               <widget class="QComboBox" name="Char0GComboBox"/>
+              </item>              <item row="0" column="8">
+               <widget class="QComboBox" name="Char0HComboBox"/>
+              </item>              <item row="1" column="2">
+               <widget class="QComboBox" name="Char1BComboBox"/>
+              </item>              <item row="1" column="3">
+               <widget class="QComboBox" name="Char1CComboBox"/>
+              </item>              <item row="1" column="4">
+               <widget class="QComboBox" name="Char1DComboBox"/>
+              </item>              <item row="1" column="5">
+               <widget class="QComboBox" name="Char1EComboBox"/>
+              </item>              <item row="1" column="6">
+               <widget class="QComboBox" name="Char1FComboBox"/>
+              </item>              <item row="1" column="7">
+               <widget class="QComboBox" name="Char1GComboBox"/>
+              </item>              <item row="1" column="8">
+               <widget class="QComboBox" name="Char1HComboBox"/>
+              </item>              <item row="2" column="2">
+               <widget class="QComboBox" name="Char2BComboBox"/>
+              </item>              <item row="2" column="3">
+               <widget class="QComboBox" name="Char2CComboBox"/>
+              </item>              <item row="2" column="4">
+               <widget class="QComboBox" name="Char2DComboBox"/>
+              </item>              <item row="2" column="5">
+               <widget class="QComboBox" name="Char2EComboBox"/>
+              </item>              <item row="2" column="6">
+               <widget class="QComboBox" name="Char2FComboBox"/>
+              </item>              <item row="2" column="7">
+               <widget class="QComboBox" name="Char2GComboBox"/>
+              </item>              <item row="2" column="8">
+               <widget class="QComboBox" name="Char2HComboBox"/>
+              </item>              <item row="3" column="2">
+               <widget class="QComboBox" name="Char3BComboBox"/>
+              </item>              <item row="3" column="3">
+               <widget class="QComboBox" name="Char3CComboBox"/>
+              </item>              <item row="3" column="4">
+               <widget class="QComboBox" name="Char3DComboBox"/>
+              </item>              <item row="3" column="5">
+               <widget class="QComboBox" name="Char3EComboBox"/>
+              </item>              <item row="3" column="6">
+               <widget class="QComboBox" name="Char3FComboBox"/>
+              </item>              <item row="3" column="7">
+               <widget class="QComboBox" name="Char3GComboBox"/>
+              </item>              <item row="3" column="8">
+               <widget class="QComboBox" name="Char3HComboBox"/>
+              </item>              <item row="4" column="2">
+               <widget class="QComboBox" name="Char4BComboBox"/>
+              </item>              <item row="4" column="3">
+               <widget class="QComboBox" name="Char4CComboBox"/>
+              </item>              <item row="4" column="4">
+               <widget class="QComboBox" name="Char4DComboBox"/>
+              </item>              <item row="4" column="5">
+               <widget class="QComboBox" name="Char4EComboBox"/>
+              </item>              <item row="4" column="6">
+               <widget class="QComboBox" name="Char4FComboBox"/>
+              </item>              <item row="4" column="7">
+               <widget class="QComboBox" name="Char4GComboBox"/>
+              </item>              <item row="4" column="8">
+               <widget class="QComboBox" name="Char4HComboBox"/>
+              </item>              <item row="5" column="2">
+               <widget class="QComboBox" name="Char5BComboBox"/>
+              </item>              <item row="5" column="3">
+               <widget class="QComboBox" name="Char5CComboBox"/>
+              </item>              <item row="5" column="4">
+               <widget class="QComboBox" name="Char5DComboBox"/>
+              </item>              <item row="5" column="5">
+               <widget class="QComboBox" name="Char5EComboBox"/>
+              </item>              <item row="5" column="6">
+               <widget class="QComboBox" name="Char5FComboBox"/>
+              </item>              <item row="5" column="7">
+               <widget class="QComboBox" name="Char5GComboBox"/>
+              </item>              <item row="5" column="8">
+               <widget class="QComboBox" name="Char5HComboBox"/>
+              </item>              <item row="6" column="2">
+               <widget class="QComboBox" name="Char6BComboBox"/>
+              </item>              <item row="6" column="3">
+               <widget class="QComboBox" name="Char6CComboBox"/>
+              </item>              <item row="6" column="4">
+               <widget class="QComboBox" name="Char6DComboBox"/>
+              </item>              <item row="6" column="5">
+               <widget class="QComboBox" name="Char6EComboBox"/>
+              </item>              <item row="6" column="6">
+               <widget class="QComboBox" name="Char6FComboBox"/>
+              </item>              <item row="6" column="7">
+               <widget class="QComboBox" name="Char6GComboBox"/>
+              </item>              <item row="6" column="8">
+               <widget class="QComboBox" name="Char6HComboBox"/>
+              </item>              <item row="7" column="2">
+               <widget class="QComboBox" name="Char7BComboBox"/>
+              </item>              <item row="7" column="3">
+               <widget class="QComboBox" name="Char7CComboBox"/>
+              </item>              <item row="7" column="4">
+               <widget class="QComboBox" name="Char7DComboBox"/>
+              </item>              <item row="7" column="5">
+               <widget class="QComboBox" name="Char7EComboBox"/>
+              </item>              <item row="7" column="6">
+               <widget class="QComboBox" name="Char7FComboBox"/>
+              </item>              <item row="7" column="7">
+               <widget class="QComboBox" name="Char7GComboBox"/>
+              </item>              <item row="7" column="8">
+               <widget class="QComboBox" name="Char7HComboBox"/>
+              </item>              <item row="8" column="2">
+               <widget class="QComboBox" name="Char8BComboBox"/>
+              </item>              <item row="8" column="3">
+               <widget class="QComboBox" name="Char8CComboBox"/>
+              </item>              <item row="8" column="4">
+               <widget class="QComboBox" name="Char8DComboBox"/>
+              </item>              <item row="8" column="5">
+               <widget class="QComboBox" name="Char8EComboBox"/>
+              </item>              <item row="8" column="6">
+               <widget class="QComboBox" name="Char8FComboBox"/>
+              </item>              <item row="8" column="7">
+               <widget class="QComboBox" name="Char8GComboBox"/>
+              </item>              <item row="8" column="8">
+               <widget class="QComboBox" name="Char8HComboBox"/>
+              </item>              <item row="9" column="2">
+               <widget class="QComboBox" name="Char9BComboBox"/>
+              </item>              <item row="9" column="3">
+               <widget class="QComboBox" name="Char9CComboBox"/>
+              </item>              <item row="9" column="4">
+               <widget class="QComboBox" name="Char9DComboBox"/>
+              </item>              <item row="9" column="5">
+               <widget class="QComboBox" name="Char9EComboBox"/>
+              </item>              <item row="9" column="6">
+               <widget class="QComboBox" name="Char9FComboBox"/>
+              </item>              <item row="9" column="7">
+               <widget class="QComboBox" name="Char9GComboBox"/>
+              </item>              <item row="9" column="8">
+               <widget class="QComboBox" name="Char9HComboBox"/>
+              </item>              <item row="10" column="2">
+               <widget class="QComboBox" name="Char10BComboBox"/>
+              </item>              <item row="10" column="3">
+               <widget class="QComboBox" name="Char10CComboBox"/>
+              </item>              <item row="10" column="4">
+               <widget class="QComboBox" name="Char10DComboBox"/>
+              </item>              <item row="10" column="5">
+               <widget class="QComboBox" name="Char10EComboBox"/>
+              </item>              <item row="10" column="6">
+               <widget class="QComboBox" name="Char10FComboBox"/>
+              </item>              <item row="10" column="7">
+               <widget class="QComboBox" name="Char10GComboBox"/>
+              </item>              <item row="10" column="8">
+               <widget class="QComboBox" name="Char10HComboBox"/>
+              </item>              <item row="11" column="2">
+               <widget class="QComboBox" name="Char11BComboBox"/>
+              </item>              <item row="11" column="3">
+               <widget class="QComboBox" name="Char11CComboBox"/>
+              </item>              <item row="11" column="4">
+               <widget class="QComboBox" name="Char11DComboBox"/>
+              </item>              <item row="11" column="5">
+               <widget class="QComboBox" name="Char11EComboBox"/>
+              </item>              <item row="11" column="6">
+               <widget class="QComboBox" name="Char11FComboBox"/>
+              </item>              <item row="11" column="7">
+               <widget class="QComboBox" name="Char11GComboBox"/>
+              </item>              <item row="11" column="8">
+               <widget class="QComboBox" name="Char11HComboBox"/>
+              </item>              <item row="12" column="2">
+               <widget class="QComboBox" name="Char12BComboBox"/>
+              </item>              <item row="12" column="3">
+               <widget class="QComboBox" name="Char12CComboBox"/>
+              </item>              <item row="12" column="4">
+               <widget class="QComboBox" name="Char12DComboBox"/>
+              </item>              <item row="12" column="5">
+               <widget class="QComboBox" name="Char12EComboBox"/>
+              </item>              <item row="12" column="6">
+               <widget class="QComboBox" name="Char12FComboBox"/>
+              </item>              <item row="12" column="7">
+               <widget class="QComboBox" name="Char12GComboBox"/>
+              </item>              <item row="12" column="8">
+               <widget class="QComboBox" name="Char12HComboBox"/>
+              </item>              <item row="13" column="2">
+               <widget class="QComboBox" name="Char13BComboBox"/>
+              </item>              <item row="13" column="3">
+               <widget class="QComboBox" name="Char13CComboBox"/>
+              </item>              <item row="13" column="4">
+               <widget class="QComboBox" name="Char13DComboBox"/>
+              </item>              <item row="13" column="5">
+               <widget class="QComboBox" name="Char13EComboBox"/>
+              </item>              <item row="13" column="6">
+               <widget class="QComboBox" name="Char13FComboBox"/>
+              </item>              <item row="13" column="7">
+               <widget class="QComboBox" name="Char13GComboBox"/>
+              </item>              <item row="13" column="8">
+               <widget class="QComboBox" name="Char13HComboBox"/>
+              </item>              <item row="14" column="2">
+               <widget class="QComboBox" name="Char14BComboBox"/>
+              </item>              <item row="14" column="3">
+               <widget class="QComboBox" name="Char14CComboBox"/>
+              </item>              <item row="14" column="4">
+               <widget class="QComboBox" name="Char14DComboBox"/>
+              </item>              <item row="14" column="5">
+               <widget class="QComboBox" name="Char14EComboBox"/>
+              </item>              <item row="14" column="6">
+               <widget class="QComboBox" name="Char14FComboBox"/>
+              </item>              <item row="14" column="7">
+               <widget class="QComboBox" name="Char14GComboBox"/>
+              </item>              <item row="14" column="8">
+               <widget class="QComboBox" name="Char14HComboBox"/>
+              </item>              <item row="15" column="2">
+               <widget class="QComboBox" name="Char15BComboBox"/>
+              </item>              <item row="15" column="3">
+               <widget class="QComboBox" name="Char15CComboBox"/>
+              </item>              <item row="15" column="4">
+               <widget class="QComboBox" name="Char15DComboBox"/>
+              </item>              <item row="15" column="5">
+               <widget class="QComboBox" name="Char15EComboBox"/>
+              </item>              <item row="15" column="6">
+               <widget class="QComboBox" name="Char15FComboBox"/>
+              </item>              <item row="15" column="7">
+               <widget class="QComboBox" name="Char15GComboBox"/>
+              </item>              <item row="15" column="8">
+               <widget class="QComboBox" name="Char15HComboBox"/>
+              </item>              <item row="16" column="2">
+               <widget class="QComboBox" name="Char16BComboBox"/>
+              </item>              <item row="16" column="3">
+               <widget class="QComboBox" name="Char16CComboBox"/>
+              </item>              <item row="16" column="4">
+               <widget class="QComboBox" name="Char16DComboBox"/>
+              </item>              <item row="16" column="5">
+               <widget class="QComboBox" name="Char16EComboBox"/>
+              </item>              <item row="16" column="6">
+               <widget class="QComboBox" name="Char16FComboBox"/>
+              </item>              <item row="16" column="7">
+               <widget class="QComboBox" name="Char16GComboBox"/>
+              </item>              <item row="16" column="8">
+               <widget class="QComboBox" name="Char16HComboBox"/>
+              </item>              <item row="17" column="2">
+               <widget class="QComboBox" name="Char17BComboBox"/>
+              </item>              <item row="17" column="3">
+               <widget class="QComboBox" name="Char17CComboBox"/>
+              </item>              <item row="17" column="4">
+               <widget class="QComboBox" name="Char17DComboBox"/>
+              </item>              <item row="17" column="5">
+               <widget class="QComboBox" name="Char17EComboBox"/>
+              </item>              <item row="17" column="6">
+               <widget class="QComboBox" name="Char17FComboBox"/>
+              </item>              <item row="17" column="7">
+               <widget class="QComboBox" name="Char17GComboBox"/>
+              </item>              <item row="17" column="8">
+               <widget class="QComboBox" name="Char17HComboBox"/>
+              </item>              <item row="18" column="2">
+               <widget class="QComboBox" name="Char18BComboBox"/>
+              </item>              <item row="18" column="3">
+               <widget class="QComboBox" name="Char18CComboBox"/>
+              </item>              <item row="18" column="4">
+               <widget class="QComboBox" name="Char18DComboBox"/>
+              </item>              <item row="18" column="5">
+               <widget class="QComboBox" name="Char18EComboBox"/>
+              </item>              <item row="18" column="6">
+               <widget class="QComboBox" name="Char18FComboBox"/>
+              </item>              <item row="18" column="7">
+               <widget class="QComboBox" name="Char18GComboBox"/>
+              </item>              <item row="18" column="8">
+               <widget class="QComboBox" name="Char18HComboBox"/>
+              </item>              <item row="19" column="2">
+               <widget class="QComboBox" name="Char19BComboBox"/>
+              </item>              <item row="19" column="3">
+               <widget class="QComboBox" name="Char19CComboBox"/>
+              </item>              <item row="19" column="4">
+               <widget class="QComboBox" name="Char19DComboBox"/>
+              </item>              <item row="19" column="5">
+               <widget class="QComboBox" name="Char19EComboBox"/>
+              </item>              <item row="19" column="6">
+               <widget class="QComboBox" name="Char19FComboBox"/>
+              </item>              <item row="19" column="7">
+               <widget class="QComboBox" name="Char19GComboBox"/>
+              </item>              <item row="19" column="8">
+               <widget class="QComboBox" name="Char19HComboBox"/>
+              </item>              <item row="20" column="2">
+               <widget class="QComboBox" name="Char20BComboBox"/>
+              </item>              <item row="20" column="3">
+               <widget class="QComboBox" name="Char20CComboBox"/>
+              </item>              <item row="20" column="4">
+               <widget class="QComboBox" name="Char20DComboBox"/>
+              </item>              <item row="20" column="5">
+               <widget class="QComboBox" name="Char20EComboBox"/>
+              </item>              <item row="20" column="6">
+               <widget class="QComboBox" name="Char20FComboBox"/>
+              </item>              <item row="20" column="7">
+               <widget class="QComboBox" name="Char20GComboBox"/>
+              </item>              <item row="20" column="8">
+               <widget class="QComboBox" name="Char20HComboBox"/>
+              </item>              <item row="21" column="2">
+               <widget class="QComboBox" name="Char21BComboBox"/>
+              </item>              <item row="21" column="3">
+               <widget class="QComboBox" name="Char21CComboBox"/>
+              </item>              <item row="21" column="4">
+               <widget class="QComboBox" name="Char21DComboBox"/>
+              </item>              <item row="21" column="5">
+               <widget class="QComboBox" name="Char21EComboBox"/>
+              </item>              <item row="21" column="6">
+               <widget class="QComboBox" name="Char21FComboBox"/>
+              </item>              <item row="21" column="7">
+               <widget class="QComboBox" name="Char21GComboBox"/>
+              </item>              <item row="21" column="8">
+               <widget class="QComboBox" name="Char21HComboBox"/>
+              </item>              <item row="22" column="2">
+               <widget class="QComboBox" name="Char22BComboBox"/>
+              </item>              <item row="22" column="3">
+               <widget class="QComboBox" name="Char22CComboBox"/>
+              </item>              <item row="22" column="4">
+               <widget class="QComboBox" name="Char22DComboBox"/>
+              </item>              <item row="22" column="5">
+               <widget class="QComboBox" name="Char22EComboBox"/>
+              </item>              <item row="22" column="6">
+               <widget class="QComboBox" name="Char22FComboBox"/>
+              </item>              <item row="22" column="7">
+               <widget class="QComboBox" name="Char22GComboBox"/>
+              </item>              <item row="22" column="8">
+               <widget class="QComboBox" name="Char22HComboBox"/>
+              </item>              <item row="23" column="2">
+               <widget class="QComboBox" name="Char23BComboBox"/>
+              </item>              <item row="23" column="3">
+               <widget class="QComboBox" name="Char23CComboBox"/>
+              </item>              <item row="23" column="4">
+               <widget class="QComboBox" name="Char23DComboBox"/>
+              </item>              <item row="23" column="5">
+               <widget class="QComboBox" name="Char23EComboBox"/>
+              </item>              <item row="23" column="6">
+               <widget class="QComboBox" name="Char23FComboBox"/>
+              </item>              <item row="23" column="7">
+               <widget class="QComboBox" name="Char23GComboBox"/>
+              </item>              <item row="23" column="8">
+               <widget class="QComboBox" name="Char23HComboBox"/>
               </item>
              </layout>
             </widget>
