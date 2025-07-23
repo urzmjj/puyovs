@@ -2,9 +2,13 @@
 
 A fork of Puyo VS 2 designed solely on implementing and improving offline play.
 
+Puyo VS 2 Mods (I think) are backwards-compatible. You can import mods made for Puyo Puyo VS 2 and they should work fine.
+
+**PLEASE DO NOT REPORT BUGS ON THE ORIGINAL GITHUB REPO OR THE OFFICIAL DISCORD.** Instead, [create an issue here.](https://github.com/urzmjj/puyovs/issues/new) In the rare case that it is a bug with Puyo VS 2 itself, and can be reproduced in the **ORIGINAL GAME,**
+then it can be filed as an issue on the original repo.
 ### TODO:
 - [X] Add 0-player support
-- [ ] Add control customization for player 2 in offline multiplayer
+- [X] Add control customization for player 2 in offline multiplayer
 - [ ] ~~Test online~~
 
 # Original README
