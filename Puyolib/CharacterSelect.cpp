@@ -28,12 +28,12 @@ CharacterSelect::CharacterSelect(Game* g)
 			m_holder[i * width + j].setCenter(0, 0);
 			m_holder[i * width + j].setPosition(
 				static_cast<float>(64 + j * 66),
-				static_cast<float>(64 + i * 52));
+				static_cast<float>(64 + i % height * 52));
 			m_charSprite[i * width + j].setImage(g->m_assetManager->loadImage(ImageToken::imgCharIcon, m_order[i * width + j]));
 			m_charSprite[i * width + j].setCenter(0, 0);
 			m_charSprite[i * width + j].setPosition(
 				static_cast<float>(64 + j * 66 + 1),
-				static_cast<float>(64 + i * 52 + 1));
+				static_cast<float>(64 + i % height * 52 + 1));
 		}
 	}
 }
@@ -118,10 +118,10 @@ void CharacterSelect::play()
 				}
 				m_holder[i * width + j].setPosition(
 					static_cast<float>(64 + j * 66) + 640.f * move,
-					static_cast<float>(64 + i * 52));
+					static_cast<float>(64 + i % height * 52));
 				m_charSprite[i * width + j].setPosition(
 					static_cast<float>(64 + j * 66) + 1.f + 640.f * move,
-					static_cast<float>(64 + i * 52) + 1.f);
+					static_cast<float>(64 + i % height * 52) + 1.f);
 			}
 		}
 	}
@@ -179,13 +179,12 @@ void CharacterSelect::play()
 	if (m_timer > 40) {
 		for (int i = 0; i < numPlayers; i++) {
 			int currentPlayer = i;
-
+			bool moved = false;
 			// ONLINE: don't care about CPU players
 			if (m_currentGame->m_settings->useCpuPlayers) {
 				// Move CPU with player 1
 				if (m_currentGame->m_players[currentPlayer]->getPlayerType() == CPU && i == allChoice)
 					currentPlayer = 0;
-
 				// TEMP chance to cancel
 				if (m_madeChoice[i]) {
 					if ((m_currentGame->m_players[currentPlayer]->m_controls.m_b == 1 && m_currentGame->m_settings->swapABConfirm[currentPlayer] == false) || (m_currentGame->m_players[currentPlayer]->m_controls.m_a == 1 && m_currentGame->m_settings->swapABConfirm[currentPlayer] == true)) {
@@ -214,12 +213,17 @@ void CharacterSelect::play()
 						m_playerNumber[j * 3 + 2].setVisible(true);
 					}
 					continue;
+				}else{
+					if (m_currentGame->m_players[currentPlayer]->m_controls.m_start == 1 ) {
+						m_sel[i] += 24;
+						m_sel[i] %= 24*8;
+						moved = true;
+					}
 				}
 			}
 
-			bool moved = false;
 			int selX = m_sel[i] % 8;
-			int selY = m_sel[i] / 8;
+			int selY = m_sel[i] / 8 % 3;
 			if (m_currentGame->m_players[currentPlayer]->getPlayerType() != ONLINE) {
 				if (m_currentGame->m_players[currentPlayer]->m_controls.m_right == 1 || m_currentGame->m_players[currentPlayer]->m_controls.m_right > 16 && m_currentGame->m_players[currentPlayer]->m_controls.m_right % 3 == 0) {
 					selX++;
@@ -254,9 +258,9 @@ void CharacterSelect::play()
 			selX %= 8;
 			selY %= 3;
 
-			m_sel[i] = selY * 8 + selX;
+			m_sel[i] = (m_sel[i]/24 % 8)*24 + selY * 8 + selX;
 			const int jj = m_sel[i] % 8;
-			const int ii = m_sel[i] / 8;
+			const int ii = m_sel[i] / 8 % 3;
 
 			// Normal display
 			float posX = 640.f / static_cast<float>(numPlayers * 2) * static_cast<float>(i * 2 + 1);
@@ -357,7 +361,7 @@ void CharacterSelect::play()
 			}
 			m_nameHolder[i].setTransparency(1 - t);
 		}
-		for (int i = 0; i < 24; i++) {
+		for (int i = 0; i < 24*8; i++) {
 			m_holder[i].setTransparency(1 - t);
 			m_charSprite[i].setTransparency(1 - t);
 		}
@@ -494,12 +498,12 @@ void CharacterSelect::prepare()
 		}
 
 		if (m_firstStart) {
-			m_sel[i] = i % 24;
+			m_sel[i] = i % (24*8);
 		} else {
 			m_sel[i] = findCurrentCharacter(i);
 		}
 		const int jj = m_sel[i] % 8;
-		const int ii = m_sel[i] / 8;
+		const int ii = m_sel[i] / 8 % 3;
 		m_madeChoice[i] = false;
 
 		// Set initial field image
@@ -655,7 +659,7 @@ int CharacterSelect::findCurrentCharacter(const int i) const
 {
 	// Find selection
 	const PuyoCharacter pc = m_currentGame->m_players[i]->getCharacter();
-	for (int j = 0; j < 24; j++) {
+	for (int j = 0; j < 24*8; j++) {
 		if (m_order[j] == pc) {
 			return j;
 		}
@@ -675,7 +679,7 @@ void CharacterSelect::setCharacter(const int playerNum, const int selection, con
 
 		// Find selection from character order
 		int s = 0;
-		for (int j = 0; j < 24; j++) {
+		for (int j = 0; j < 24*8; j++) {
 			if (selection == static_cast<int>(m_order[j])) {
 				s = j;
 				break;
@@ -683,7 +687,7 @@ void CharacterSelect::setCharacter(const int playerNum, const int selection, con
 		}
 		m_sel[i] = s;
 		const int jj = m_sel[i] % 8;
-		const int ii = m_sel[i] / 8;
+		const int ii = m_sel[i] / 8 % 3;
 
 		// Normal display
 		float posX = 640.f / static_cast<float>(m_numPlayers * 2) * static_cast<float>(i * 2 + 1);

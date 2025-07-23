@@ -39,7 +39,7 @@ DropSet dropPattern[] = {
 MovePuyoType getFromDropPattern(const PuyoCharacter p, int i)
 {
 	i %= 16;
-	return dropPattern[static_cast<unsigned char>(p)].mpt[i];
+	return dropPattern[static_cast<unsigned char>(p)%24].mpt[i];
 }
 
 int nuisanceDropPattern(const int maxX, int cycle)
