@@ -24,9 +24,11 @@ public:
 	~OfflineDialog() override;
 
 private slots:
+	void updateEnabled(ppvs::Rules rule) const;
 	void on_PlayButton_clicked();
 	void on_CancelButton_clicked();
-
+	void on_ModeComboBox_currentIndexChanged(int index) const;
+	void on_DefaultRulesCheckbox_clicked() const;
 	void on_ColorsCheckBox_toggled(bool checked) const;
 
 private:
