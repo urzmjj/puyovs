@@ -6,6 +6,9 @@ Puyo VS 2 Mods (I think) are backwards-compatible. You can import mods made for 
 
 **PLEASE DO NOT REPORT BUGS ON THE ORIGINAL GITHUB REPO OR THE OFFICIAL DISCORD.** Instead, [create an issue here.](https://github.com/urzmjj/puyovs/issues/new) In the rare case that it is a bug with Puyo VS 2 itself, and can be reproduced in the **ORIGINAL GAME,**
 then it can be filed as an issue on the original repo. HOwever, as the original repo is inactive, it's probably best to create an issue here.
+
+As the original repo is inactive and many feature implementations are low-level on the client end, there are currently no plans to pull request to the original repo.
+
 ### TODO:
 - [X] Add 0-player support
 - [X] Add control customization for player 2 in offline multiplayer
