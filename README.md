@@ -12,6 +12,7 @@ As the original repo is inactive and many feature implementations are low-level 
 ### TODO:
 - [X] Add 0-player support
 - [X] Add control customization for player 2 in offline multiplayer
+- [ ] Properly render Puyo Fields in 3+ player games with 2 or more human players.
 - [ ] ~~Test online~~
 
 # Original README
