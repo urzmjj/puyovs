@@ -19,7 +19,7 @@ namespace ppvs
  * debug status text and debug sprites. This might be augmented in the future.
  * Alternatively, just set this variable to 1.
  * */
-#define PUYOLIB_DEBUG
+//#define PUYOLIB_DEBUG
 
 #ifdef PUYOLIB_DEBUG
 int debugMode = 1;
