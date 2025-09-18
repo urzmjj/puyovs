@@ -50,7 +50,7 @@ add_library(Audiolib STATIC
 )
 
 target_link_libraries(Audiolib
-    $<IF:$<TARGET_EXISTS:SDL2::SDL2>,SDL2::SDL2,SDL2::SDL2-static>
+    $<IF:$<TARGET_EXISTS:SDL3::SDL3>,SDL3::SDL3,SDL3::SDL3-static>
     VgmStream
 )
 target_include_directories(Audiolib PUBLIC include)
