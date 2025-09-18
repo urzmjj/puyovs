@@ -32,6 +32,11 @@ public:
 	int m_a = 0;
 	int m_b = 0;
 	int m_start = 0;
+	int m_select = 0;
+	int m_x = 0;
+	int m_y = 0;
+	int m_l = 0;
+	int m_r = 0;
 
 	bool m_delayDown = false;
 	bool m_delayUp = false;
@@ -40,6 +45,11 @@ public:
 	bool m_delayA = false;
 	bool m_delayB = false;
 	bool m_delayStart = false;
+	bool m_delaySelect = false;
+	bool m_delayX = false;
+	bool m_delayY = false;
+	bool m_delayL = false;
+	bool m_delayR = false;
 
 	void init(int playerNumber, PlayerType type, RecordState s = RecordState::NOT_RECORDING);
 	void setState(const FeInput& input, int t);
@@ -58,7 +68,11 @@ private:
 	bool m_dA = false;
 	bool m_dB = false;
 	bool m_dStart = false;
-
+	bool m_dSelect = false;
+	bool m_dX = false;
+	bool m_dY = false;
+	bool m_dL = false;
+	bool m_dR = false;
 	int m_playerNumber = 0;
 	PlayerType m_type = CPU;
 };

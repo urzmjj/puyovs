@@ -214,9 +214,13 @@ void CharacterSelect::play()
 					}
 					continue;
 				}else{
-					if (m_currentGame->m_players[currentPlayer]->m_controls.m_start == 1 ) {
+					if (m_currentGame->m_players[currentPlayer]->m_controls.m_x == 1 ) {
 						m_sel[i] += 24;
 						m_sel[i] %= 24*8;
+						moved = true;
+					}
+					if (m_currentGame->m_players[currentPlayer]->m_controls.m_y == 1 ) {
+						m_sel[i] = 24*floor(m_sel[i]/24)+rand()%24;
 						moved = true;
 					}
 				}

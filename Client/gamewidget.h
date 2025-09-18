@@ -25,7 +25,7 @@ public:
 
 	void setControls(int pl, InputCondition up, InputCondition down,
 		InputCondition left, InputCondition right,
-		InputCondition a, InputCondition b, InputCondition start);
+		InputCondition a, InputCondition b, InputCondition start, InputCondition select, InputCondition x, InputCondition y, InputCondition l, InputCondition r);
 	void replaceProxy(NetChannelProxy* newproxy);
 	void playMusic();
 signals:
@@ -53,7 +53,7 @@ protected:
 	ChatWindow* mChatWindow;
 	QAction* mToggleChat;
 	QAction* mFullScreen;
-	InputCondition mControls[1000][7];
+	InputCondition mControls[1000][12];
 	NetChannelProxy* mProxy;
 	bool moveOnce;
 	QPoint parentPos;

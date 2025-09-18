@@ -135,6 +135,13 @@ void SettingsDialog::load()
 	ui->RightInput->setText(settings.string("controlsp1", "right", "right"));
 	ui->AInput->setText(settings.string("controlsp1", "a", "x"));
 	ui->BInput->setText(settings.string("controlsp1", "b", "z"));
+	ui->AInput->setText(settings.string("controlsp1", "a", "x"));
+	ui->BInput->setText(settings.string("controlsp1", "b", "z"));
+	ui->XInput->setText(settings.string("controlsp1", "x", "unassigned"));
+	ui->YInput->setText(settings.string("controlsp1", "y", "unassigned"));
+	ui->LInput->setText(settings.string("controlsp1", "l", "unassigned"));
+	ui->RInput->setText(settings.string("controlsp1", "r", "unassigned"));
+	ui->SelectInput->setText(settings.string("controlsp1", "select", "unassigned"));
 	ui->StartInput->setText(settings.string("controlsp1", "start", "return"));
 	ui->SwapABConfirmCheckBox->setChecked(settings.boolean("controlsp1", "swapabconfirm", false));
 
@@ -206,6 +213,11 @@ void SettingsDialog::save()
 	settings.setString("controlsp"+a, "right", ui->RightInput->text());
 	settings.setString("controlsp"+a, "a", ui->AInput->text());
 	settings.setString("controlsp"+a, "b", ui->BInput->text());
+	settings.setString("controlsp"+a, "x", ui->XInput->text());
+	settings.setString("controlsp"+a, "y", ui->YInput->text());
+	settings.setString("controlsp"+a, "l", ui->LInput->text());
+	settings.setString("controlsp"+a, "r", ui->RInput->text());
+	settings.setString("controlsp"+a, "select", ui->SelectInput->text());
 	settings.setString("controlsp"+a, "start", ui->StartInput->text());
 	settings.setBoolean("controlsp"+a, "swapabconfirm", ui->SwapABConfirmCheckBox->isChecked());
 
@@ -463,6 +475,11 @@ void SettingsDialog::on_PlayerInputLineEdit_editingFinished(){
 	ui->RightInput->setText(settings.string("controlsp"+a, "right", "right"));
 	ui->AInput->setText(settings.string("controlsp"+a, "a", "x"));
 	ui->BInput->setText(settings.string("controlsp"+a, "b", "z"));
+	ui->XInput->setText(settings.string("controlsp"+a, "x", "unassigned"));
+	ui->YInput->setText(settings.string("controlsp"+a, "y", "unassigned"));
+	ui->LInput->setText(settings.string("controlsp"+a, "l", "unassigned"));
+	ui->RInput->setText(settings.string("controlsp"+a, "r", "unassigned"));
+	ui->SelectInput->setText(settings.string("controlsp"+a, "select", "unassigned"));
 	ui->StartInput->setText(settings.string("controlsp"+a, "start", "return"));
 	ui->SwapABConfirmCheckBox->setChecked(settings.boolean("controlsp"+a, "swapabconfirm", false));
 }

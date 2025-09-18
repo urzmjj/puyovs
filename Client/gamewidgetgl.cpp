@@ -179,6 +179,11 @@ void GameWidgetGL::keyPressEvent(QKeyEvent* k)
 				HANDLE_KEY(4, a);
 				HANDLE_KEY(5, b);
 				HANDLE_KEY(6, start);
+				HANDLE_KEY(7, select);
+				HANDLE_KEY(8, x);
+				HANDLE_KEY(9, y);
+				HANDLE_KEY(10, l);
+				HANDLE_KEY(11, r);
 		#undef HANDLE_KEY
 	}
 
@@ -244,6 +249,11 @@ void GameWidgetGL::keyReleaseEvent(QKeyEvent* k)
 			HANDLE_KEY(4, a);
 			HANDLE_KEY(5, b);
 			HANDLE_KEY(6, start);
+			HANDLE_KEY(7, select);
+			HANDLE_KEY(8, x);
+			HANDLE_KEY(9, y);
+			HANDLE_KEY(10, l);
+			HANDLE_KEY(11, r);
 		#undef HANDLE_KEY
 	}
 }
@@ -327,6 +337,11 @@ void GameWidgetGL::process()
 								HANDLE_JOY(4, a);
 								HANDLE_JOY(5, b);
 								HANDLE_JOY(6, start);
+								HANDLE_JOY(7, select);
+								HANDLE_JOY(8, x);
+								HANDLE_JOY(9, y);
+								HANDLE_JOY(10, l);
+								HANDLE_JOY(11, r);
 					#undef HANDLE_JOY
 				}
 			}

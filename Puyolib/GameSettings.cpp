@@ -270,6 +270,11 @@ GameSettings::GameSettings(const RuleSetInfo& ruleSetInfo)
 	controls["1a"] = "x";
 	controls["1b"] = "z";
 	controls["1start"] = "enter";
+	controls["1select"] = "unassigned";
+	controls["1x"] = "unassigned";
+	controls["1y"] = "unassigned";
+	controls["1l"] = "unassigned";
+	controls["1r"] = "unassigned";
 
 	controls["2up"] = "i";
 	controls["2down"] = "k";
@@ -278,6 +283,11 @@ GameSettings::GameSettings(const RuleSetInfo& ruleSetInfo)
 	controls["2a"] = "m";
 	controls["2b"] = "n";
 	controls["2start"] = "space";
+	controls["2select"] = "unassigned";
+	controls["2x"] = "unassigned";
+	controls["2y"] = "unassigned";
+	controls["2l"] = "unassigned";
+	controls["2r"] = "unassigned";
 }
 
 GameSettings::~GameSettings() = default;

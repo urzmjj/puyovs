@@ -154,7 +154,7 @@ public:
 };
 
 struct FeInput {
-	bool up, down, left, right, a, b, start;
+	bool up, down, left, right, a, b, start, select, x, y, l, r;
 };
 
 class FeRenderTarget {

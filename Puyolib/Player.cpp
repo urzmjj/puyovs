@@ -444,54 +444,79 @@ void Player::initVoices()
 void Player::playerSetup(FieldProp& properties, const int playerNum, const int playerTotal)
 {
 	// Right side square setup
-	const int width = static_cast<int>(ceil(sqrt(static_cast<double>(playerTotal - 1))));
+	if(m_currentGame->m_settings->numHumans == 1 || playerTotal <= 2){
+		const int width = static_cast<int>(ceil(sqrt(static_cast<double>(playerTotal - 1))));
+		if (playerNum == 1) {
+			// Player 1
+			m_globalScale = 1;
+			properties.offsetX = 48;
+			properties.offsetY = 84;
+			m_fieldNormal.init(properties, this);
+			m_fieldFever.init(properties, this);
+			m_fieldTemp.init(properties, this);
 
-	if (playerNum == 1) {
-		// Player 1
-		m_globalScale = 1;
-		properties.offsetX = 48;
-		properties.offsetY = 84;
-		m_fieldNormal.init(properties, this);
-		m_fieldFever.init(properties, this);
-		m_fieldTemp.init(properties, this);
+			// Set next puyo
+			m_nextPuyoOffsetX = properties.offsetX + (static_cast<float>(properties.gridX * properties.gridWidth) * properties.scaleX + 10) * m_globalScale;
+			m_nextPuyoOffsetY = properties.offsetY;
+			m_nextPuyoScale = m_globalScale;
+			m_nextPuyo.init(0, 0, 1, true, m_data);
 
-		// Set next puyo
-		m_nextPuyoOffsetX = properties.offsetX + (static_cast<float>(properties.gridX * properties.gridWidth) * properties.scaleX + 10) * m_globalScale;
-		m_nextPuyoOffsetY = properties.offsetY;
-		m_nextPuyoScale = m_globalScale;
-		m_nextPuyo.init(0, 0, 1, true, m_data);
+			// Set background
+			m_fieldSprite.setImage(m_data->imgField1); // Can also be character related
 
-		// Set background
-		m_fieldSprite.setImage(m_data->imgField1); // Can also be character related
+			// Set up border
+			m_borderSprite.setImage(m_data->imgBorder1);
 
-		// Set up border
-		m_borderSprite.setImage(m_data->imgBorder1);
+			// Fever gauge
+			m_feverGauge.init(-8.f, static_cast<float>(properties.gridHeight * (properties.gridY - 3 - 0)), 1.f, true, m_data);
+		} else if (playerNum > 1) {
+			// Other players
+			m_globalScale = 1.0f / static_cast<float>(width);
+			properties.offsetX = 400.f + static_cast<float>((playerNum - 2) % width) * 320.f * m_globalScale - 75.f * m_globalScale * static_cast<float>(width - 1);
+			properties.offsetY = 84.f + static_cast<float>((playerNum - 2) / width) * 438.f * m_globalScale - 42.f * m_globalScale * static_cast<float>(width - 1); // NOLINT(bugprone-integer-division)
+			m_fieldNormal.init(properties, this);
+			m_fieldFever.init(properties, this);
+			m_fieldTemp.init(properties, this);
 
-		// Fever gauge
-		m_feverGauge.init(-8.f, static_cast<float>(properties.gridHeight * (properties.gridY - 3 - 0)), 1.f, true, m_data);
-	} else if (playerNum > 1) {
+			// Set next puyo
+			m_nextPuyoOffsetX = properties.offsetX - 75 * m_globalScale;
+			m_nextPuyoOffsetY = properties.offsetY;
+			m_nextPuyoScale = m_globalScale;
+			m_nextPuyo.init(0, 0, 1, false, m_data);
+
+			// Set background
+			m_fieldSprite.setImage(m_data->imgField2); // Can also be character related
+
+			// Set up border
+			m_borderSprite.setImage(m_data->imgBorder2);
+
+			// Fever gauge
+			m_feverGauge.init(76, static_cast<float>(properties.gridHeight * (properties.gridY - 3 - 0)), 1.f, false, m_data);
+		}
+	}else{
+		const int width = static_cast<int>(playerTotal<=4?playerTotal:ceil(sqrt(static_cast<double>(playerTotal*2))));
 		// Other players
-		m_globalScale = 1.0f / static_cast<float>(width);
-		properties.offsetX = 400.f + static_cast<float>((playerNum - 2) % width) * 320.f * m_globalScale - 75.f * m_globalScale * static_cast<float>(width - 1);
-		properties.offsetY = 84.f + static_cast<float>((playerNum - 2) / width) * 438.f * m_globalScale - 42.f * m_globalScale * static_cast<float>(width - 1); // NOLINT(bugprone-integer-division)
+		m_globalScale = 2.f / static_cast<float>(width);
+		properties.offsetX = 88.f + static_cast<float>((playerNum - 1) % width) * 320.f * m_globalScale - 75.f * m_globalScale * static_cast<float>(width-1)/2.f + (playerNum%2==1?20:-20) * m_globalScale;
+		properties.offsetY = 84.f + static_cast<float>((playerNum - 1) / width) * 438.f * m_globalScale - 42.f * m_globalScale * static_cast<float>(width-1); // NOLINT(bugprone-integer-division)
 		m_fieldNormal.init(properties, this);
 		m_fieldFever.init(properties, this);
 		m_fieldTemp.init(properties, this);
 
 		// Set next puyo
-		m_nextPuyoOffsetX = properties.offsetX - 75 * m_globalScale;
+		m_nextPuyoOffsetX = properties.offsetX + (playerNum%2==0?(static_cast<float>(properties.gridX * properties.gridWidth) * properties.scaleX + 10) * m_globalScale:- 75 * m_globalScale);
 		m_nextPuyoOffsetY = properties.offsetY;
 		m_nextPuyoScale = m_globalScale;
-		m_nextPuyo.init(0, 0, 1, false, m_data);
+		m_nextPuyo.init(0, 0, 1, playerNum%2==0, m_data);
 
 		// Set background
-		m_fieldSprite.setImage(m_data->imgField2); // Can also be character related
+		m_fieldSprite.setImage(playerNum%2==0?m_data->imgField1:m_data->imgField2); // Can also be character related
 
 		// Set up border
-		m_borderSprite.setImage(m_data->imgBorder2);
+		m_borderSprite.setImage(playerNum%2==0?m_data->imgBorder1:m_data->imgBorder2);
 
 		// Fever gauge
-		m_feverGauge.init(76, static_cast<float>(properties.gridHeight * (properties.gridY - 3 - 0)), 1.f, false, m_data);
+		m_feverGauge.init(playerNum%2==0?-8:76, static_cast<float>(properties.gridHeight * (properties.gridY - 3 - 0)), 1.f, playerNum%2==1, m_data);
 	}
 }
 

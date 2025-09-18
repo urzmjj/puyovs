@@ -15,6 +15,14 @@ namespace ppvs {
 9=release	A
 10=press	B
 11=release	B
+12=press	X
+13=release	X
+14=press	Y
+15=release	Y
+16=press	L
+17=release	L
+18=press	R
+19=release	R
 */
 
 void Controller::init(const int playerNumber, const PlayerType type, const RecordState s)
@@ -30,7 +38,9 @@ void Controller::setState(const FeInput& input, int t)
 		return;
 
 	// Set indicators with delay
-	if (m_up)
+
+	//what were you thinking guys
+	/*if (m_up)
 		m_delayUp = true;
 	else
 		m_delayUp = false;
@@ -58,7 +68,22 @@ void Controller::setState(const FeInput& input, int t)
 		m_delayStart = true;
 	else
 		m_delayStart = false;
+*/
 
+	m_delayUp = (bool)m_up;
+	m_delayDown = (bool)m_down;
+	m_delayLeft = (bool)m_left;
+	m_delayRight = (bool)m_right;
+	m_delayA = (bool)m_a;
+	m_delayB = (bool)m_b;
+	m_delayX = (bool)m_x;
+	m_delayY = (bool)m_y;
+	m_delayL = (bool)m_l;
+	m_delayR = (bool)m_r;
+	m_delaySelect = (bool)m_select;
+	m_delayStart = (bool)m_start;
+
+	
 	if (m_state != RecordState::REPLAYING) {
 		if (input.a)
 			m_a++;
@@ -68,6 +93,22 @@ void Controller::setState(const FeInput& input, int t)
 			m_b++;
 		else
 			m_b = 0;
+		if (input.x)
+			m_x++;
+		else
+			m_x = 0;
+		if (input.y)
+			m_y++;
+		else
+			m_y = 0;
+		if (input.l)
+			m_l++;
+		else
+			m_l = 0;
+		if (input.r)
+			m_r++;
+		else
+			m_r = 0;
 		if (input.up)
 			m_up++;
 		else
@@ -84,6 +125,10 @@ void Controller::setState(const FeInput& input, int t)
 			m_right++;
 		else
 			m_right = 0;
+		if (input.select)
+			m_select++;
+		else
+			m_select = 0;
 		if (input.start)
 			m_start++;
 		else
@@ -135,6 +180,30 @@ void Controller::setState(const FeInput& input, int t)
 				case 11:
 					m_dB = false;
 					break;
+				case 12:
+					m_dX = true;
+					break;
+				case 13:
+					m_dX = false;
+					break;
+				case 14:
+					m_dY = true;
+					break;
+				case 15:
+					m_dY = false;
+					break;
+				case 16:
+					m_dL = true;
+					break;
+				case 17:
+					m_dL = false;
+					break;
+				case 18:
+					m_dR = true;
+					break;
+				case 19:
+					m_dR = false;
+					break;
 				default:
 					break;
 				}
@@ -167,6 +236,22 @@ void Controller::setState(const FeInput& input, int t)
 			m_b++;
 		else
 			m_b = 0;
+		if (m_dX)
+			m_x++;
+		else
+			m_x = 0;
+		if (m_dY)
+			m_y++;
+		else
+			m_y = 0;
+		if (m_dL)
+			m_l++;
+		else
+			m_l = 0;
+		if (m_dR)
+			m_r++;
+		else
+			m_r = 0;
 	}
 }
 
@@ -180,6 +265,11 @@ void Controller::release()
 	m_a = 0;
 	m_b = 0;
 	m_start = 0;
+	m_select = 0;
+	m_x = 0;
+	m_y = 0;
+	m_l = 0;
+	m_r = 0;
 
 	m_delayDown = false;
 	m_delayUp = false;
@@ -188,6 +278,11 @@ void Controller::release()
 	m_delayA = false;
 	m_delayB = false;
 	m_delayStart = false;
+	m_delaySelect = false;
+	m_delayX = false;
+	m_delayY = false;
+	m_delayL = false;
+	m_delayR = false;
 
 	m_dUp = false;
 	m_dDown = false;
@@ -196,6 +291,11 @@ void Controller::release()
 	m_dA = false;
 	m_dB = false;
 	m_dStart = false;
+	m_dSelect = false;
+	m_dX = false;
+	m_dY = false;
+	m_dL = false;
+	m_dR = false;
 }
 
 void Controller::record(int t)
@@ -247,6 +347,38 @@ void Controller::record(int t)
 	if (m_b == 0 && m_dB == true) {
 		m_dB = false;
 		m_recordEvents.emplace_back(t, 11);
+	}
+	if (m_x > 0 && m_dX == false) {
+		m_dA = true;
+		m_recordEvents.emplace_back(t, 12);
+	}
+	if (m_x == 0 && m_dX == true) {
+		m_dX = false;
+		m_recordEvents.emplace_back(t, 13);
+	}
+	if (m_y > 0 && m_dY == false) {
+		m_dY = true;
+		m_recordEvents.emplace_back(t, 14);
+	}
+	if (m_y == 0 && m_dY == true) {
+		m_dY = false;
+		m_recordEvents.emplace_back(t, 15);
+	}
+	if (m_l > 0 && m_dL == false) {
+		m_dL = true;
+		m_recordEvents.emplace_back(t, 16);
+	}
+	if (m_l == 0 && m_dL == true) {
+		m_dL = false;
+		m_recordEvents.emplace_back(t, 17);
+	}
+	if (m_r > 0 && m_dR == false) {
+		m_dR = true;
+		m_recordEvents.emplace_back(t, 18);
+	}
+	if (m_r == 0 && m_dR == true) {
+		m_dR = false;
+		m_recordEvents.emplace_back(t, 19);
 	}
 }
 
