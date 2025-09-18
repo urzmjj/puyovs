@@ -7,7 +7,7 @@
 #include <time.h>
 #include "enet/enet.h"
 
-#ifdef __APPLE__
+#ifdef SDL_PLATFORM_APPLE
 time_t time();
 #endif
 

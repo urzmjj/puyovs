@@ -39,8 +39,8 @@ void RenderTargetSoft::present()
 		0x000000ff);
 	SDL_SetSurfaceBlendMode(backBuffer, SDL_BLENDMODE_NONE);
 	SDL_Surface* windowSurface = SDL_GetWindowSurface(m_window);
-	SDL_BlitScaled(backBuffer, nullptr, windowSurface, nullptr);
-	SDL_FreeSurface(backBuffer);
+	SDL_BlitSurfaceScaled(backBuffer, nullptr, windowSurface, nullptr);
+	SDL_DestroySurface(backBuffer);
 	SDL_UpdateWindowSurface(m_window);
 }
 

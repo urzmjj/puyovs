@@ -1,6 +1,6 @@
 #pragma once
 #include "../Renderers/Renderer.h"
-#include <SDL_events.h>
+#include <SDL3/SDL_events.h>
 
 namespace PuyoVS::ClientNG::Scenes {
 

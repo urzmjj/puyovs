@@ -5,7 +5,7 @@ namespace PuyoVS::ClientNG {
 #ifndef PREFIX
 #if defined(_WIN32)
 #define PREFIX "C:\\PuyoVS"
-#elif defined(__APPLE__) && defined(__aarch64__)
+#elif defined(SDL_PLATFORM_APPLE) && defined(__aarch64__)
 #define PREFIX "/opt/homebrew"
 #else
 #define PREFIX "/usr/local"

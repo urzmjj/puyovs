@@ -4,7 +4,7 @@ namespace PuyoVS::ClientNG {
 
 Font::Font(const unsigned char* data, size_t length)
 {
-	m_font = TTF_OpenFontRW(SDL_RWFromMem((void*)data, length), 1, 12);
+	m_font = TTF_OpenFontRW(SDL_IOFromMem((void*)data, length), 1, 12);
 }
 
 Font::~Font()

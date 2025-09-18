@@ -20,9 +20,9 @@ struct SDLDriver::Priv {
 		Gamepad(SDL_Joystick* joystick)
 			: mJoystick(joystick)
 		{
-			mNumButtons = SDL_JoystickNumButtons(joystick);
-			mNumAxes = SDL_JoystickNumAxes(joystick);
-			mNumHats = SDL_JoystickNumHats(joystick);
+			mNumButtons = SDL_GetNumJoystickButtons(joystick);
+			mNumAxes = SDL_GetNumJoystickAxes(joystick);
+			mNumHats = SDL_GetNumJoystickHats(joystick);
 		}
 
 		~Gamepad() override = default;
@@ -37,7 +37,7 @@ struct SDLDriver::Priv {
 				return false;
 			}
 
-			return SDL_JoystickGetButton(mJoystick, num) == 1;
+			return SDL_GetJoystickButton(mJoystick, num) == 1;
 		}
 
 		[[nodiscard]] float axis(int num) const override
@@ -46,7 +46,7 @@ struct SDLDriver::Priv {
 				return nanf("");
 			}
 
-			return SDL_JoystickGetAxis(mJoystick, num) / 32767.f;
+			return SDL_GetJoystickAxis(mJoystick, num) / 32767.f;
 		}
 
 		[[nodiscard]] HatPosition hat(int num) const override
@@ -55,7 +55,7 @@ struct SDLDriver::Priv {
 				return HatPosition::HatCentered;
 			}
 
-			switch (SDL_JoystickGetHat(mJoystick, num)) {
+			switch (SDL_GetJoystickHat(mJoystick, num)) {
 			default:
 			case SDL_HAT_CENTERED:
 				return HatPosition::HatCentered;
@@ -88,7 +88,7 @@ struct SDLDriver::Priv {
 	{
 		error = false;
 
-		if (const int result = SDL_InitSubSystem(SDL_INIT_GAMECONTROLLER); result < 0) {
+		if (const int result = SDL_InitSubSystem(SDL_INIT_GAMEPAD); result < 0) {
 			ILIB_ERROR("Error initializing SDL: %s\n", SDL_GetError());
 
 			error = true;
@@ -102,7 +102,7 @@ struct SDLDriver::Priv {
 
 		const int numJoysticks = SDL_NumJoysticks();
 		for (int i = 0; i < numJoysticks; i++) {
-			SDL_Joystick* joy = SDL_JoystickOpen(i);
+			SDL_Joystick* joy = SDL_OpenJoystick(i);
 
 			// No joy? :(
 			if (!joy) {
@@ -110,7 +110,7 @@ struct SDLDriver::Priv {
 				continue;
 			}
 
-			ILIB_WARN("Opened joypad %s.\n", SDL_JoystickName(joy));
+			ILIB_WARN("Opened joypad %s.\n", SDL_GetJoystickName(joy));
 
 			gamepads.emplace_back(joy);
 		}
@@ -127,21 +127,21 @@ struct SDLDriver::Priv {
 		SDL_Event e;
 
 		SDL_PumpEvents();
-		while (SDL_PeepEvents(&e, 1, SDL_GETEVENT, SDL_JOYAXISMOTION, SDL_JOYDEVICEREMOVED) > 0) {
+		while (SDL_PeepEvents(&e, 1, SDL_GETEVENT, SDL_EVENT_JOYSTICK_AXIS_MOTION, SDL_EVENT_JOYSTICK_REMOVED) > 0) {
 			switch (e.type) {
-			case SDL_JOYBUTTONDOWN:
+			case SDL_EVENT_JOYSTICK_BUTTON_DOWN:
 				events.push_back(InputEvent::createButtonEvent(InputEvent::Type::ButtonDownEvent, e.jbutton.which, e.jbutton.button));
 				break;
 
-			case SDL_JOYBUTTONUP:
+			case SDL_EVENT_JOYSTICK_BUTTON_UP:
 				events.push_back(InputEvent::createButtonEvent(InputEvent::Type::ButtonUpEvent, e.jbutton.which, e.jbutton.button));
 				break;
 
-			case SDL_JOYAXISMOTION:
+			case SDL_EVENT_JOYSTICK_AXIS_MOTION:
 				events.push_back(InputEvent::createAxisEvent(e.jaxis.which, e.jaxis.axis, e.jaxis.value / 32767.f));
 				break;
 
-			case SDL_JOYHATMOTION:
+			case SDL_EVENT_JOYSTICK_HAT_MOTION:
 				HatPosition position;
 
 				switch (e.jhat.value) {

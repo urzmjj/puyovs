@@ -53,7 +53,7 @@ IntroLogo::~IntroLogo() = default;
 bool IntroLogo::handleEvent(const SDL_Event& event)
 {
 	// TODO: handle input properly; also, centralize 'skippable' scene logic
-	if (event.type == SDL_KEYUP && (event.key.keysym.sym == SDLK_SPACE || event.key.keysym.sym == SDLK_RETURN || event.key.keysym.sym == SDLK_KP_ENTER || event.key.keysym.sym == SDLK_ESCAPE || event.key.keysym.sym == SDLK_x)) {
+	if (event.type == SDL_EVENT_KEY_UP && (event.key.keysym.sym == SDLK_SPACE || event.key.keysym.sym == SDLK_RETURN || event.key.keysym.sym == SDLK_KP_ENTER || event.key.keysym.sym == SDLK_ESCAPE || event.key.keysym.sym == SDLK_X)) {
 		finish();
 		return true;
 	}
