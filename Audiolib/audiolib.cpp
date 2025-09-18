@@ -2,7 +2,7 @@
 #include "fast_mutex.h"
 #include "mixer.h"
 #include <SDL3/SDL.h>
-#include <SDL3/SDL_main.h>
+
 
 using namespace tthread;
 
