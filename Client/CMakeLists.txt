@@ -131,7 +131,7 @@ target_link_libraries(PuyoVS
     Puyolib::Puyolib
 	Audiolib::Audiolib
 	Inputlib::Inputlib
-    $<IF:$<TARGET_EXISTS:SDL3::SDL3>,SDL3::SDL3,SDL3::SDL3-static>
+    $<IF:$<TARGET_EXISTS:SDL2::SDL2>,SDL2::SDL2,SDL2::SDL2-static>
     ZLIB::ZLIB
     Qt5::Widgets
     Qt5::OpenGL

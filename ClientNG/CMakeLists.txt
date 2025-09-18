@@ -35,9 +35,9 @@ target_link_libraries(vs2
 	ZLIB::ZLIB
 	Puyolib::Puyolib
 	PVS_ENet
-	$<TARGET_NAME_IF_EXISTS:SDL3::SDL3main>
-	$<IF:$<TARGET_EXISTS:SDL3::SDL3>,SDL3::SDL3,SDL3::SDL3-static>
-	$<IF:$<TARGET_EXISTS:SDL3_ttf::SDL3_ttf>,SDL3_ttf::SDL3_ttf,SDL3_ttf::SDL3_ttf-static>
+	$<TARGET_NAME_IF_EXISTS:SDL2::SDL2main>
+	$<IF:$<TARGET_EXISTS:SDL2::SDL2>,SDL2::SDL2,SDL2::SDL2-static>
+	$<IF:$<TARGET_EXISTS:SDL2_ttf::SDL2_ttf>,SDL2_ttf::SDL2_ttf,SDL2_ttf::SDL2_ttf-static>
 	spng::spng
 	glm::glm
 	${OPENGL_LIBRARIES}
