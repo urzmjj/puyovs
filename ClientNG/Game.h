@@ -2,7 +2,7 @@
 #include "Renderers/Renderer.h"
 
 #include <map>
-#include <SDL3/SDL_events.h>
+#include <SDL_events.h>
 #include <string>
 #include <vector>
 

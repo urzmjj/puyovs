@@ -18,7 +18,7 @@
 #define ENET_BUILDING_LIB 1
 #include "enet/enet.h"
 
-#ifdef SDL_PLATFORM_APPLE
+#ifdef __APPLE__
 #ifdef HAS_POLL
 #undef HAS_POLL
 #endif

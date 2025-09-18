@@ -2,7 +2,7 @@
 #include "Scenes/Intro/IntroLogo.h"
 #include "Scenes/Scene.h"
 
-#include <SDL3/SDL_timer.h>
+#include <SDL_timer.h>
 #include <stdexcept>
 
 namespace PuyoVS::ClientNG {
@@ -62,7 +62,7 @@ GameWindow& GameWindow::operator=(GameWindow&&) = default;
 
 void GameWindow::handleEvent(const SDL_Event& event)
 {
-	if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_EVENT_WINDOW_RESIZED) {
+	if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_RESIZED) {
 		m_renderTarget->setViewport(event.window.data1, event.window.data2);
 	}
 
@@ -125,7 +125,7 @@ Game::Game()
 void Game::handleEvent(const SDL_Event& event)
 {
 	switch (event.type) {
-	case SDL_EVENT_QUIT:
+	case SDL_QUIT:
 		m_running = false;
 		break;
 
@@ -164,7 +164,7 @@ void Game::run()
 {
 	size_t frameStep = 0;
 	constexpr Sint64 frameDelays[] = { 16, 17, 17 };
-	auto nextFrame = static_cast<Sint64>(SDL_GetTicks());
+	auto nextFrame = static_cast<Sint64>(SDL_GetTicks64());
 
 	while (m_running) {
 		const auto frameDelay = frameDelays[frameStep++ % std::size(frameDelays)];
@@ -173,11 +173,11 @@ void Game::run()
 		update();
 		render();
 
-		Sint64 drift = nextFrame - static_cast<Sint64>(SDL_GetTicks());
+		Sint64 drift = nextFrame - static_cast<Sint64>(SDL_GetTicks64());
 
 		// If the drift becomes intolerable, just reset the clock.
 		if (drift > 1000 || drift < -1000) {
-			nextFrame = static_cast<Sint64>(SDL_GetTicks());
+			nextFrame = static_cast<Sint64>(SDL_GetTicks64());
 			continue;
 		}
 

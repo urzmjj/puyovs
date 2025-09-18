@@ -55,7 +55,7 @@
    typedef SInt32 spx_int32_t;
    typedef UInt32 spx_uint32_t;
 
-#elif (defined(SDL_PLATFORM_APPLE) && defined(__MACH__)) /* MacOS X Framework build */
+#elif (defined(__APPLE__) && defined(__MACH__)) /* MacOS X Framework build */
 
 #  include <sys/types.h>
    typedef int16_t spx_int16_t;

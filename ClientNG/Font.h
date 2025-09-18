@@ -1,5 +1,5 @@
 #pragma once
-#include <SDL3_ttf/SDL_ttf.h>
+#include "SDL_ttf.h"
 
 namespace PuyoVS::Renderers {
 class Texture;

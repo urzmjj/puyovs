@@ -50,7 +50,7 @@ IntroNotes::~IntroNotes() = default;
 bool IntroNotes::handleEvent(const SDL_Event& event)
 {
 	// TODO: handle input properly; also, centralize 'skippable' scene logic
-	if (event.type == SDL_EVENT_KEY_UP && (event.key.keysym.sym == SDLK_SPACE || event.key.keysym.sym == SDLK_RETURN || event.key.keysym.sym == SDLK_KP_ENTER || event.key.keysym.sym == SDLK_ESCAPE || event.key.keysym.sym == SDLK_X)) {
+	if (event.type == SDL_KEYUP && (event.key.keysym.sym == SDLK_SPACE || event.key.keysym.sym == SDLK_RETURN || event.key.keysym.sym == SDLK_KP_ENTER || event.key.keysym.sym == SDLK_ESCAPE || event.key.keysym.sym == SDLK_x)) {
 		finish();
 		return true;
 	}

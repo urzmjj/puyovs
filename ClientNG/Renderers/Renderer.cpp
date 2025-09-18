@@ -4,7 +4,7 @@
 #include "./OpenGL/OpenGL.h"
 #include "./Software/Software.h"
 
-#include <SDL3_ttf/SDL_ttf.h>
+#include <SDL_ttf.h>
 #include <spng.h>
 
 namespace PuyoVS::Renderers {
@@ -32,7 +32,7 @@ void Texture::renderText(const ClientNG::Font& font, const char* text, const SDL
 	SDL_LockSurface(surface);
 	upload(surface->pitch / 4, surface->h, surface->pixels);
 	SDL_UnlockSurface(surface);
-	SDL_DestroySurface(surface);
+	SDL_FreeSurface(surface);
 }
 
 RenderTarget* createRenderer(SDL_Window* window, const RenderSettings& settings)

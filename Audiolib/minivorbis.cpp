@@ -46,7 +46,7 @@
 #include <string.h>
 #include <assert.h>
 #include <math.h>
-#if !(defined(SDL_PLATFORM_APPLE) || defined(MACOSX) || defined(macintosh) || defined(Macintosh))
+#if !(defined(__APPLE__) || defined(MACOSX) || defined(macintosh) || defined(Macintosh))
 #include <malloc.h>
 #endif
 #else

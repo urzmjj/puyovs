@@ -2,7 +2,6 @@
 #include "fast_mutex.h"
 #include "mixer.h"
 #include <SDL3/SDL.h>
-#include <SDL3/SDL_main.h>
 
 using namespace tthread;
 
@@ -54,7 +53,7 @@ Device::Device()
 	}
 
 	SDL_AudioSpec desire = {
-		44100, SDL_AUDIO_F32LE, 2, 0, 4096, 0, 0,
+		44100, AUDIO_F32, 2, 0, 4096, 0, 0,
 		reinterpret_cast<SDL_AudioCallback>(&Priv::callback), p
 	},
 				  obtained;

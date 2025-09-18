@@ -1,9 +1,9 @@
 #include "OpenGL.h"
 
-#include <SDL3/SDL_log.h>
+#include "SDL_log.h"
 
-#include <SDL3/SDL_opengl.h>
-#include <SDL3/SDL_video.h>
+#include <SDL_opengl.h>
+#include <SDL_video.h>
 #include <glm/ext/matrix_clip_space.hpp>
 
 namespace PuyoVS::Renderers::OpenGL {
@@ -236,7 +236,7 @@ RenderTargetGL::~RenderTargetGL()
 		activeTarget = nullptr;
 	}
 
-	SDL_GL_DestroyContext(m_context);
+	SDL_GL_DeleteContext(m_context);
 }
 
 void RenderTargetGL::clear(const float r, const float g, const float b, const float a)
