@@ -1,7 +1,7 @@
 #include "audiolib.h"
 #include "fast_mutex.h"
 #include "mixer.h"
-#include <SDL3/SDL.h>
+#include <SDL.h>
 
 using namespace tthread;
 
