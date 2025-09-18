@@ -3,7 +3,7 @@
 #include "drivers/sdldriver.h"
 #include "inputevent.h"
 
-#include <SDL.h>
+#include <SDL3/SDL.h>
 #include <math.h>
 #include <signal.h>
 
