@@ -28,22 +28,20 @@ GameWindow::GameWindow(Game* game, const WindowSettings& windowConfig)
 		flags |= SDL_WINDOW_METAL;
 	}
 
-	if (windowConfig.fullscreen) {
-		flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
-	} else if (windowConfig.resizable) {
-		flags |= SDL_WINDOW_RESIZABLE;
-	}
-
 	m_window = SDL_CreateWindow(
 		windowConfig.title.c_str(),
-		SDL_WINDOWPOS_UNDEFINED,
-		SDL_WINDOWPOS_UNDEFINED,
 		windowConfig.width,
 		windowConfig.height,
 		flags);
 
 	if (!m_window) {
 		throw std::runtime_error("Failed to create window");
+	}
+
+	if (windowConfig.fullscreen) {
+		SDL_SetWindowFullscreen(m_window, true);
+	} else if (windowConfig.resizable) {
+		flags |= SDL_WINDOW_RESIZABLE;
 	}
 
 	m_renderTarget = createRenderer(m_window, windowConfig.renderConfig);
@@ -62,7 +60,7 @@ GameWindow& GameWindow::operator=(GameWindow&&) = default;
 
 void GameWindow::handleEvent(const SDL_Event& event)
 {
-	if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_EVENT_WINDOW_RESIZED) {
+	if (event.type == SDL_EVENT_WINDOW_RESIZED) {
 		m_renderTarget->setViewport(event.window.data1, event.window.data2);
 	}
 
@@ -129,15 +127,16 @@ void Game::handleEvent(const SDL_Event& event)
 		m_running = false;
 		break;
 
-	case SDL_WINDOWEVENT:
-		if (const auto window = m_windowById.find(event.window.windowID); window != m_windowById.end()) {
-			window->second->handleEvent(event);
-		}
-		break;
-
 	default:
-		if (m_activeWindow) {
-			m_activeWindow->handleEvent(event);
+		if(event.type >= SDL_EVENT_WINDOW_FIRST && event.type <= SDL_EVENT_WINDOW_LAST){
+			if (const auto window = m_windowById.find(event.window.windowID); window != m_windowById.end()) {
+				window->second->handleEvent(event);
+			}
+		}
+		else{
+			if (m_activeWindow) {
+				m_activeWindow->handleEvent(event);
+			}
 		}
 	}
 }

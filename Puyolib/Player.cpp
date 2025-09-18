@@ -516,7 +516,7 @@ void Player::playerSetup(FieldProp& properties, const int playerNum, const int p
 		m_borderSprite.setImage(playerNum%2==0?m_data->imgBorder1:m_data->imgBorder2);
 
 		// Fever gauge
-		m_feverGauge.init(playerNum%2==0?-8:76, static_cast<float>(properties.gridHeight * (properties.gridY - 3 - 0)), 1.f, playerNum%2==1, m_data);
+		m_feverGauge.init((float)(playerNum%2==0?-8:76), static_cast<float>(properties.gridHeight * (properties.gridY - 3 - 0)), 1.f, playerNum%2==1, m_data);
 	}
 }
 

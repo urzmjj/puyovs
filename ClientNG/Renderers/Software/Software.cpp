@@ -27,19 +27,12 @@ RenderTargetSoft::RenderTargetSoft(SDL_Window* window, bool enableDebug)
 
 void RenderTargetSoft::present()
 {
-	SDL_Surface* backBuffer = SDL_CreateRGBSurfaceFrom(
-		m_colorBuffer.data(),
-		m_scaledViewport.x,
-		m_scaledViewport.y,
-		32,
-		m_scaledViewport.x * static_cast<int>(sizeof(uint32_t)),
-		0xff000000,
-		0x00ff0000,
-		0x0000ff00,
-		0x000000ff);
+	SDL_Surface* backBuffer = SDL_CreateSurfaceFrom(m_scaledViewport.x, m_scaledViewport.y,
+									SDL_GetPixelFormatForMasks(32, 0xff000000, 0x00ff0000, 0x0000ff00, 0x000000ff),
+									m_colorBuffer.data(), m_scaledViewport.x * static_cast<int>(sizeof(uint32_t)));
 	SDL_SetSurfaceBlendMode(backBuffer, SDL_BLENDMODE_NONE);
 	SDL_Surface* windowSurface = SDL_GetWindowSurface(m_window);
-	SDL_BlitSurfaceScaled(backBuffer, nullptr, windowSurface, nullptr);
+	SDL_BlitSurface(backBuffer, nullptr, windowSurface, nullptr);
 	SDL_DestroySurface(backBuffer);
 	SDL_UpdateWindowSurface(m_window);
 }

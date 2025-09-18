@@ -1,6 +1,6 @@
 find_package(OpenGL REQUIRED COMPONENTS OpenGL)
 
-add_executable(vs2 WIN32
+add_executable(vs2
 	"main.cpp"
 	"Scenes/Intro/Logo.cpp"
 	"Renderers/OpenGL/OpenGL.cpp"

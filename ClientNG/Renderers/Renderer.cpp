@@ -26,7 +26,7 @@ void Texture::loadPng(const void* data, size_t length)
 
 void Texture::renderText(const ClientNG::Font& font, const char* text, const SDL_Color color, const unsigned wrapLength, int& w, int& h)
 {
-	SDL_Surface* surface = TTF_RenderUTF8_Blended_Wrapped(font.m_font, text, color, wrapLength);
+	SDL_Surface* surface = TTF_RenderText_Blended_Wrapped(font.m_font, text, 0, color, wrapLength);
 	w = surface->w;
 	h = surface->h;
 	SDL_LockSurface(surface);
