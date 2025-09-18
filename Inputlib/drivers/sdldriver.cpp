@@ -98,10 +98,9 @@ struct SDLDriver::Priv {
 		signal(SIGINT, SIG_DFL);
 
 		processEvents = 0;
-		SDL_SetJoystickEventsEnabled(false);
+		SDL_JoystickEventState(SDL_DISABLE);
 
-		int numJoysticks = 0;
-		SDL_GetJoysticks(&numJoysticks);
+		const int numJoysticks = SDL_NumJoysticks();
 		for (int i = 0; i < numJoysticks; i++) {
 			SDL_Joystick* joy = SDL_OpenJoystick(i);
 
@@ -229,7 +228,7 @@ void SDLDriver::enableEvents()
 		return;
 	}
 
-	SDL_SetJoystickEventsEnabled(true);
+	SDL_JoystickEventState(SDL_ENABLE);
 }
 
 void SDLDriver::disableEvents()
@@ -240,7 +239,7 @@ void SDLDriver::disableEvents()
 		return;
 	}
 
-	SDL_SetJoystickEventsEnabled(false);
+	SDL_JoystickEventState(SDL_DISABLE);
 }
 
 bool SDLDriver::getEvent(InputEvent* e)

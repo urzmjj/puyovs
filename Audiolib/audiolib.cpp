@@ -53,19 +53,15 @@ Device::Device()
 		ALIB_ERROR("Failed to initialize SDL: %s\n", SDL_GetError());
 	}
 
-	SDL_AudioSpec desire = /*{
+	SDL_AudioSpec desire = {
 		44100, SDL_AUDIO_F32LE, 2, 0, 4096, 0, 0,
 		reinterpret_cast<SDL_AudioCallback>(&Priv::callback), p
 	},
-				  obtained;*/
-				  {SDL_AUDIO_F32LE,2,14400};
+				  obtained;
 
-	SDL_AudioStreamCallback obtained = reinterpret_cast<SDL_AudioStreamCallback>(&Priv::callback);
-
-	SDL_OpenAudioDeviceStream(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, &desire, obtained, NULL);
-	p->mixer.setFormat(14400, 2);
-	
-	SDL_ResumeAudioDevice(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK);
+	SDL_OpenAudio(&desire, &obtained);
+	p->mixer.setFormat(obtained.freq, obtained.channels);
+	SDL_PauseAudio(0);
 }
 
 Device::~Device()
@@ -73,7 +69,7 @@ Device::~Device()
 	p->mixmutex.lock();
 	p->quitsignal = true;
 
-	SDL_CloseAudioDevice(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK);
+	SDL_CloseAudio();
 	SDL_QuitSubSystem(SDL_INIT_AUDIO);
 	p->mixmutex.unlock();
 
