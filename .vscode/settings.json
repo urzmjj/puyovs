@@ -1,9 +1,6 @@
 {
     "files.associations": {
         "random": "cpp",
-        "deque": "cpp",
-        "xiosbase": "cpp",
-        "utility": "cpp"
-    },
-    "C_Cpp.errorSquiggles": "enabled"
+        "deque": "cpp"
+    }
 }
