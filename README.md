@@ -13,6 +13,7 @@ As the original repo is inactive and many feature implementations are low-level 
 - [X] Add control customization for player 2 in offline multiplayer
 - [X] Properly render Puyo Fields in 3+ player games with 2 or more local human players.
 - [ ] Fix or replace SDL (this may not be possible)
+- [ ] Repair MacOS support (this may not be possible)
 - [ ] ~~Test online~~
 
 # Original README
