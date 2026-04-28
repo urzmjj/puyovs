@@ -45,35 +45,35 @@ jobs:
         path: puyovs-windows-${{ matrix.arch }}.7z
         retention-days: 5
 
-  build-macos:
-    name: Build (macOS)
-    runs-on: macos-13
-    steps:
-    - name: Download Qt SDK
-      run: curl -Lo "$HOME/qt.7z" "https://github.com/puyonexus/qt-sdk-builder/releases/download/v2/qt-macos-5.15.2-x86_64-static-release.7z"
-    - name: Extract Qt SDK
-      run: 7z x "$HOME/qt.7z" "-o$HOME"
-    - name: Add Qt SDK to path
-      run: echo "$HOME/Qt-5.15.2/bin" >> $GITHUB_PATH
-    - name: Checkout
-      uses: actions/checkout@v4
-      with:
-        submodules: recursive
-    - name: Configure and Build PuyoVS
-      run: |
-        cmake -S . -B .build -DCMAKE_BUILD_TYPE=RelWithDebInfo
-        cmake --build .build --parallel $(sysctl -n hw.ncpu)
-    - name: Copy Assets To Bundle
-      run: cp -r ${{ github.workspace }}/Assets/* "./Client/PuyoVS.app/Contents/MacOS/"
-      working-directory: .build
-    - name: Package Build Artifact
-      run: 7z a puyovs-macos-amd64.7z "./.build/Client/PuyoVS.app"
-    - name: Upload Artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: puyovs-macos-amd64
-        path: puyovs-macos-amd64.7z
-        retention-days: 5
+  # build-macos:
+  #  name: Build (macOS)
+  #  runs-on: macos-13
+  #  steps:
+  #  - name: Download Qt SDK
+  #    run: curl -Lo "$HOME/qt.7z" "https://github.com/puyonexus/qt-sdk-builder/releases/download/v2/qt-macos-5.15.2-x86_64-static-release.7z"
+  #  - name: Extract Qt SDK
+  #    run: 7z x "$HOME/qt.7z" "-o$HOME"
+  #  - name: Add Qt SDK to path
+  #    run: echo "$HOME/Qt-5.15.2/bin" >> $GITHUB_PATH
+  #   - name: Checkout
+  #     uses: actions/checkout@v4
+  #     with:
+  #       submodules: recursive
+  #   - name: Configure and Build PuyoVS
+  #     run: |
+  #       cmake -S . -B .build -DCMAKE_BUILD_TYPE=RelWithDebInfo
+  #       cmake --build .build --parallel $(sysctl -n hw.ncpu)
+  #   - name: Copy Assets To Bundle
+  #     run: cp -r ${{ github.workspace }}/Assets/* "./Client/PuyoVS.app/Contents/MacOS/"
+  #     working-directory: .build
+  #   - name: Package Build Artifact
+  #     run: 7z a puyovs-macos-amd64.7z "./.build/Client/PuyoVS.app"
+  #   - name: Upload Artifacts
+  #     uses: actions/upload-artifact@v4
+  #     with:
+  #       name: puyovs-macos-amd64
+  #       path: puyovs-macos-amd64.7z
+  #       retention-days: 5
 
   build-flatpak:
     name: Build (Flatpak)
