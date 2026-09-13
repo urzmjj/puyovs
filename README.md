@@ -1,5 +1,5 @@
 # Puyo VS [![Build](https://github.com/puyonexus/puyovs/actions/workflows/compile.yml/badge.svg)](https://github.com/puyonexus/puyovs/actions/workflows/compile.yml)
-A fork of Puyo VS 2 designed solely on implementing and improving offline play.
+A fork of Puyo VS 2 designed mostly for implementing and improving offline play and adding new offline game modes.
 
 Puyo VS 2 Mods (I think) are backwards-compatible. You can import mods made for Puyo Puyo VS 2 and they should work fine.
 
