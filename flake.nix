@@ -14,7 +14,7 @@
       overlays.default = final: prev: {
         puyovs = final.stdenv.mkDerivation {
           pname = "puyovs";
-          version = "32";
+          version = "32-apple";
           src = ./.;
           nativeBuildInputs = with final; with libsForQt5; [
             cmake
